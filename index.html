@@ -21,6 +21,19 @@
             --color-text-light: #6B6B6B;
         }
 
+        [data-theme="dark"] {
+            --color-primary: #F8F6F3;
+            --color-accent: #D4A574;
+            --color-light: #1a1410;
+            --color-white: #0f0d0a;
+            --color-text: #E8E8E8;
+            --color-text-light: #B8B8B8;
+        }
+
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.7;
@@ -37,6 +50,23 @@
             background: var(--color-white);
             z-index: 1000;
             border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] nav {
+            background: var(--color-white);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        [data-theme="dark"] .logo {
+            color: var(--color-text);
+        }
+
+        [data-theme="dark"] .nav-contact {
+            color: var(--color-text-light);
+        }
+
+        [data-theme="dark"] .nav-contact a {
+            color: var(--color-text);
         }
 
         .nav-container {
@@ -73,6 +103,41 @@
 
         .nav-contact a:hover {
             color: var(--color-accent);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--color-accent);
+            transform: rotate(20deg);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            border-color: rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: rgba(0,0,0,0.1);
         }
 
         /* Hero */
@@ -182,6 +247,47 @@
 
         .product-card:hover {
             transform: translateY(-4px);
+        }
+
+        [data-theme="dark"] .product-card {
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        [data-theme="dark"] .search-box input,
+        [data-theme="dark"] .sort-container select {
+            background: var(--color-light);
+            border-color: rgba(255,255,255,0.1);
+            color: var(--color-text);
+        }
+
+        [data-theme="dark"] .category-btn {
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        [data-theme="dark"] .category-btn:hover,
+        [data-theme="dark"] .category-btn.active {
+            background: var(--color-text);
+            color: var(--color-white);
+        }
+
+        [data-theme="dark"] .load-more-btn {
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        [data-theme="dark"] .load-more-btn:hover {
+            background: var(--color-text);
+            color: var(--color-white);
+        }
+
+        [data-theme="dark"] .about-section {
+            background: var(--color-light);
+        }
+
+        [data-theme="dark"] .schedule-item,
+        [data-theme="dark"] .info-box a {
+            color: var(--color-text);
         }
 
         .product-image {
@@ -559,6 +665,15 @@
                 font-size: 0.75rem;
             }
 
+            .theme-toggle {
+                width: 34px;
+                height: 34px;
+            }
+
+            .theme-icon {
+                font-size: 1.1rem;
+            }
+
             .nav-contact span:last-child {
                 display: none;
             }
@@ -753,6 +868,9 @@
         <div class="nav-container">
             <div class="logo">LA MAISON DU PAIN</div>
             <div class="nav-contact">
+                <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
+                    <span class="theme-icon">🌙</span>
+                </button>
                 <a href="tel:0787326499">07 87 32 64 99</a>
                 <span>•</span>
                 <span>exemple@boulangerie.fr</span>
@@ -1282,6 +1400,25 @@
 
         // Initialisation
         renderProducts(products);
+
+        // Gestion du thème jour/nuit
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        const html = document.documentElement;
+
+        // Charger le thème sauvegardé
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
     </script>
 
     <!-- About -->
