@@ -210,6 +210,126 @@
             filter: grayscale(0.3);
         }
 
+        .product-image-real {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+            background: var(--color-light);
+        }
+
+        .product-image-real img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image-real img {
+            transform: scale(1.05);
+        }
+
+        /* Filtres et recherche */
+        .filters-container {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-text);
+            background: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 30px;
+            border: 1px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .sort-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sort-container label {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+
+        .sort-container select {
+            padding: 10px 40px 10px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-text);
+            background: var(--color-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%233E3E3E" d="M1 1l5 5 5-5"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .sort-container select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
+        }
+
         .product-info {
             padding: 30px;
         }
@@ -472,6 +592,28 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .filters-container {
+                gap: 20px;
+            }
+
+            .category-filters {
+                gap: 8px;
+            }
+
+            .category-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .sort-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -487,6 +629,11 @@
                 padding: 14px 30px;
                 font-size: 0.9rem;
             }
+
+            .category-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -499,7 +646,7 @@
             <div class="nav-contact">
                 <a href="tel:0787326499">07 87 32 64 99</a>
                 <span>•</span>
-                <span>contact@maisonpain.fr</span>
+                <span>exemple@boulangerie.fr</span>
             </div>
         </div>
     </nav>
@@ -523,81 +670,408 @@
                 <p>Chaque produit est façonné avec soin dans le respect des traditions boulangères</p>
             </div>
             
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🥐</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Viennoiserie</div>
-                        <h3>Croissant pur beurre</h3>
-                        <p>Feuilletage doré et croustillant, préparé avec du beurre AOP de haute qualité.</p>
-                        <div class="product-price">1,20 €</div>
-                    </div>
+            <!-- Filtres et recherche -->
+            <div class="filters-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Rechercher un produit..." />
+                    <span class="search-icon">🔍</span>
                 </div>
+                
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="tous">Tous</button>
+                    <button class="category-btn" data-category="pain">Pains</button>
+                    <button class="category-btn" data-category="viennoiserie">Viennoiseries</button>
+                    <button class="category-btn" data-category="patisserie">Pâtisseries</button>
+                    <button class="category-btn" data-category="special">Spécialités</button>
+                </div>
+                
+                <div class="sort-container">
+                    <label for="sortSelect">Trier par :</label>
+                    <select id="sortSelect">
+                        <option value="default">Par défaut</option>
+                        <option value="name-asc">Nom (A-Z)</option>
+                        <option value="name-desc">Nom (Z-A)</option>
+                        <option value="price-asc">Prix croissant</option>
+                        <option value="price-desc">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🍞</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Pain</div>
-                        <h3>Pain tradition</h3>
-                        <p>Fabriqué selon les méthodes ancestrales avec une longue fermentation naturelle.</p>
-                        <div class="product-price">1,50 €</div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🎂</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Pâtisserie</div>
-                        <h3>Créations sur mesure</h3>
-                        <p>Gâteaux personnalisés pour vos événements exceptionnels et moments de partage.</p>
-                        <div class="product-price">Sur devis</div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🥖</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Pain</div>
-                        <h3>Baguette classique</h3>
-                        <p>L'authentique baguette française avec sa croûte dorée et sa mie alvéolée.</p>
-                        <div class="product-price">0,95 €</div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🍰</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Pâtisserie</div>
-                        <h3>Pâtisseries fines</h3>
-                        <p>Éclairs, tartes aux fruits de saison, macarons et entremets délicats.</p>
-                        <div class="product-price">À partir de 3,50 €</div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span>🥨</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Viennoiserie</div>
-                        <h3>Viennoiseries maison</h3>
-                        <p>Pain au chocolat, pain aux raisins et chaussons aux pommes artisanaux.</p>
-                        <div class="product-price">1,30 €</div>
-                    </div>
-                </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Les produits seront générés par JavaScript -->
+            </div>
+            
+            <div id="noResults" style="display: none; text-align: center; padding: 60px 20px; color: var(--color-text-light);">
+                <p style="font-size: 1.2rem;">Aucun produit trouvé</p>
+                <p style="margin-top: 10px;">Essayez une autre recherche ou catégorie</p>
             </div>
         </div>
     </section>
+
+    <script>
+        // Base de données des produits
+        const products = [
+            {
+                name: "Croissant pur beurre",
+                category: "viennoiserie",
+                description: "Feuilletage doré et croustillant, préparé avec du beurre AOP de haute qualité.",
+                price: 1.20,
+                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
+            },
+            {
+                name: "Pain au chocolat",
+                category: "viennoiserie",
+                description: "Chocolat noir de qualité enrobé dans un feuilletage croustillant.",
+                price: 1.30,
+                image: "https://images.unsplash.com/photo-1623334044303-241021148842?w=800&q=80"
+            },
+            {
+                name: "Pain aux raisins",
+                category: "viennoiserie",
+                description: "Viennoiserie moelleuse garnie de crème pâtissière et raisins secs.",
+                price: 1.30,
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
+            },
+            {
+                name: "Chausson aux pommes",
+                category: "viennoiserie",
+                description: "Pâte feuilletée garnie de compote de pommes maison.",
+                price: 1.40,
+                image: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=800&q=80"
+            },
+            {
+                name: "Baguette tradition",
+                category: "pain",
+                description: "Pain traditionnel français avec une croûte dorée et une mie alvéolée.",
+                price: 1.20,
+                image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80"
+            },
+            {
+                name: "Baguette classique",
+                category: "pain",
+                description: "La baguette authentique française, croustillante et savoureuse.",
+                price: 0.95,
+                image: "https://images.unsplash.com/photo-1508737804141-4c3b688e2546?w=800&q=80"
+            },
+            {
+                name: "Pain de campagne",
+                category: "pain",
+                description: "Pain rustique à la mie dense et savoureuse, parfait pour accompagner vos repas.",
+                price: 3.50,
+                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80"
+            },
+            {
+                name: "Pain complet",
+                category: "pain",
+                description: "Pain aux céréales complètes, riche en fibres et savoureux.",
+                price: 3.20,
+                image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=800&q=80"
+            },
+            {
+                name: "Pain aux céréales",
+                category: "pain",
+                description: "Pain enrichi de graines de tournesol, lin et sésame.",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
+            },
+            {
+                name: "Pain de mie",
+                category: "pain",
+                description: "Pain de mie moelleux, idéal pour les toasts et sandwichs.",
+                price: 2.50,
+                image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80"
+            },
+            {
+                name: "Éclair au chocolat",
+                category: "patisserie",
+                description: "Pâte à choux garnie de crème pâtissière au chocolat et glaçage.",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1612201142855-7873b53f990d?w=800&q=80"
+            },
+            {
+                name: "Éclair café",
+                category: "patisserie",
+                description: "Éclair fourré de crème au café avec un glaçage fondant.",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
+            },
+            {
+                name: "Tarte aux fraises",
+                category: "patisserie",
+                description: "Tarte sablée garnie de crème pâtissière et fraises fraîches.",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80"
+            },
+            {
+                name: "Tarte au citron meringuée",
+                category: "patisserie",
+                description: "Tarte au citron acidulée surmontée d'une meringue légère.",
+                price: 4.20,
+                image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=800&q=80"
+            },
+            {
+                name: "Mille-feuille",
+                category: "patisserie",
+                description: "Feuilletage croustillant et crème pâtissière vanille.",
+                price: 4.00,
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80"
+            },
+            {
+                name: "Paris-Brest",
+                category: "patisserie",
+                description: "Couronne de pâte à choux garnie de crème mousseline pralinée.",
+                price: 4.80,
+                image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80"
+            },
+            {
+                name: "Macaron assortiment",
+                category: "patisserie",
+                description: "Assortiment de 6 macarons aux parfums variés.",
+                price: 9.00,
+                image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=80"
+            },
+            {
+                name: "Tarte aux pommes",
+                category: "patisserie",
+                description: "Tarte traditionnelle aux pommes avec compote maison.",
+                price: 3.50,
+                image: "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800&q=80"
+            },
+            {
+                name: "Forêt-Noire",
+                category: "patisserie",
+                description: "Gâteau au chocolat, chantilly et cerises noires.",
+                price: 5.50,
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80"
+            },
+            {
+                name: "Opéra",
+                category: "patisserie",
+                description: "Gâteau raffiné au café et chocolat en couches alternées.",
+                price: 5.20,
+                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
+            },
+            {
+                name: "Flan pâtissier",
+                category: "patisserie",
+                description: "Flan onctueux à la vanille sur pâte sablée.",
+                price: 3.20,
+                image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=800&q=80"
+            },
+            {
+                name: "Brioche tressée",
+                category: "special",
+                description: "Brioche moelleuse et dorée, idéale pour le petit-déjeuner.",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80"
+            },
+            {
+                name: "Kouign-amann",
+                category: "special",
+                description: "Spécialité bretonne caramélisée et feuilletée au beurre.",
+                price: 2.20,
+                image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&q=80"
+            },
+            {
+                name: "Chouquettes",
+                category: "special",
+                description: "Petits choux croustillants parsemés de sucre perlé. Sachet de 10.",
+                price: 2.50,
+                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
+            },
+            {
+                name: "Financier",
+                category: "special",
+                description: "Petit gâteau moelleux aux amandes et beurre noisette.",
+                price: 1.80,
+                image: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
+            },
+            {
+                name: "Cannelé",
+                category: "special",
+                description: "Spécialité bordelaise caramélisée à l'extérieur, moelleuse à l'intérieur.",
+                price: 2.00,
+                image: "https://images.unsplash.com/photo-1612182062366-28edd707fde0?w=800&q=80"
+            },
+            {
+                name: "Gâteau personnalisé",
+                category: "special",
+                description: "Créations sur mesure pour vos événements exceptionnels.",
+                price: 0,
+                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
+            }
+        ];
+
+        let currentProducts = [...products];
+
+        // Fonction de similarité (distance de Levenshtein simplifiée)
+        function similarity(s1, s2) {
+            s1 = s1.toLowerCase();
+            s2 = s2.toLowerCase();
+            
+            if (s1.includes(s2) || s2.includes(s1)) return 0.9;
+            
+            let longer = s1.length > s2.length ? s1 : s2;
+            let shorter = s1.length > s2.length ? s2 : s1;
+            
+            let longerLength = longer.length;
+            if (longerLength === 0) return 1.0;
+            
+            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+        }
+
+        function editDistance(s1, s2) {
+            s1 = s1.toLowerCase();
+            s2 = s2.toLowerCase();
+            
+            let costs = [];
+            for (let i = 0; i <= s1.length; i++) {
+                let lastValue = i;
+                for (let j = 0; j <= s2.length; j++) {
+                    if (i === 0) {
+                        costs[j] = j;
+                    } else if (j > 0) {
+                        let newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        }
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+                if (i > 0) costs[s2.length] = lastValue;
+            }
+            return costs[s2.length];
+        }
+
+        // Afficher les produits
+        function renderProducts(productsToShow) {
+            const grid = document.getElementById('productsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = productsToShow.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image-real">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${getCategoryLabel(product.category)}</div>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-price">
+                            ${product.price > 0 ? `${product.price.toFixed(2)} €` : 'Sur devis'} 
+                            <span style="font-size: 0.8rem; font-weight: 300; color: var(--color-text-light);">(exemple)</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'pain': 'Pain',
+                'viennoiserie': 'Viennoiserie',
+                'patisserie': 'Pâtisserie',
+                'special': 'Spécialité'
+            };
+            return labels[category] || category;
+        }
+
+        // Filtrer par catégorie
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                if (category === 'tous') {
+                    currentProducts = [...products];
+                } else {
+                    currentProducts = products.filter(p => p.category === category);
+                }
+                
+                applyCurrentSort();
+            });
+        });
+
+        // Recherche avec tolérance aux fautes
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.trim();
+            
+            if (searchTerm === '') {
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                if (activeCategory === 'tous') {
+                    currentProducts = [...products];
+                } else {
+                    currentProducts = products.filter(p => p.category === activeCategory);
+                }
+            } else {
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                const baseProducts = activeCategory === 'tous' ? products : products.filter(p => p.category === activeCategory);
+                
+                currentProducts = baseProducts.filter(product => {
+                    const nameSimilarity = similarity(product.name, searchTerm);
+                    const descSimilarity = similarity(product.description, searchTerm);
+                    return nameSimilarity > 0.5 || descSimilarity > 0.4;
+                }).sort((a, b) => {
+                    const simA = Math.max(similarity(a.name, searchTerm), similarity(a.description, searchTerm) * 0.7);
+                    const simB = Math.max(similarity(b.name, searchTerm), similarity(b.description, searchTerm) * 0.7);
+                    return simB - simA;
+                });
+            }
+            
+            applyCurrentSort();
+        });
+
+        // Tri
+        document.getElementById('sortSelect').addEventListener('change', function() {
+            applyCurrentSort();
+        });
+
+        function applyCurrentSort() {
+            const sortValue = document.getElementById('sortSelect').value;
+            let sortedProducts = [...currentProducts];
+            
+            switch(sortValue) {
+                case 'name-asc':
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'name-desc':
+                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'price-asc':
+                    sortedProducts.sort((a, b) => {
+                        if (a.price === 0) return 1;
+                        if (b.price === 0) return -1;
+                        return a.price - b.price;
+                    });
+                    break;
+                case 'price-desc':
+                    sortedProducts.sort((a, b) => {
+                        if (a.price === 0) return 1;
+                        if (b.price === 0) return -1;
+                        return b.price - a.price;
+                    });
+                    break;
+                default:
+                    // Par défaut, on garde l'ordre original
+                    break;
+            }
+            
+            renderProducts(sortedProducts);
+        }
+
+        // Initialisation
+        renderProducts(products);
+    </script>
 
     <!-- About -->
     <section class="about-section">
@@ -613,19 +1087,20 @@
             <div class="info-grid">
                 <div class="info-box">
                     <h3>Horaires d'ouverture</h3>
-                    <p>Du lundi au samedi<br>6h30 - 19h30</p>
+                    <p>Du lundi au samedi<br>6h30 - 19h30<br><span style="font-size: 0.85rem; color: var(--color-accent);">(exemple)</span></p>
                     <p style="margin-top: 10px;">Dimanche<br>7h00 - 13h00</p>
                 </div>
                 
                 <div class="info-box">
                     <h3>Nous contacter</h3>
                     <p><a href="tel:0787326499">07 87 32 64 99</a></p>
-                    <p style="margin-top: 8px;"><a href="mailto:contact@maisonpain.fr">contact@maisonpain.fr</a></p>
+                    <p style="margin-top: 8px;"><a href="mailto:exemple@boulangerie.fr">exemple@boulangerie.fr</a></p>
                 </div>
                 
                 <div class="info-box">
                     <h3>Notre adresse</h3>
-                    <p>12 Rue de la Boulangerie<br>75000 Paris</p>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-primary); text-decoration: none; border-bottom: 1px solid var(--color-accent);">17 Route de Paris<br>14370 Moult-Chicheboville</a></p>
+                    <p style="margin-top: 8px; font-size: 0.85rem;"><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-accent); text-decoration: none;">📍 Voir sur Google Maps</a></p>
                 </div>
             </div>
         </div>
