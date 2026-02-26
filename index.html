@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boulangerie Artisanale du Village</title>
+    <title>La Maison du Pain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,541 +12,643 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --color-primary: #2C1810;
+            --color-accent: #D4A574;
+            --color-light: #F8F6F3;
+            --color-white: #FFFFFF;
+            --color-text: #3E3E3E;
+            --color-text-light: #6B6B6B;
+        }
+
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fafafa;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+        /* Navigation */
+        nav {
+            position: fixed;
             top: 0;
+            width: 100%;
+            background: var(--color-white);
             z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .header-content {
-            max-width: 1200px;
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            height: 80px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            letter-spacing: 1px;
         }
 
-        .contact-header {
+        .nav-contact {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             align-items: center;
-            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+        .nav-contact a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* Hero Section */
+        .nav-contact a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23D2691E" width="1200" height="400"/><circle fill="%23CD853F" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%23CD853F" opacity="0.2" cx="800" cy="250" r="150"/><circle fill="%23CD853F" opacity="0.25" cx="1000" cy="100" r="80"/></svg>');
+            margin-top: 80px;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(44,24,16,0.2), rgba(44,24,16,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800"><rect fill="%23F8F6F3" width="1920" height="800"/><path fill="%23D4A574" opacity="0.08" d="M0,400 Q480,300 960,400 T1920,400 L1920,800 L0,800 Z"/></svg>');
             background-size: cover;
             background-position: center;
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
             text-align: center;
-            padding: 100px 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #ff6b35;
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
-        }
-
-        .cta-button:hover {
-            background-color: #ff5520;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255,107,53,0.6);
-        }
-
-        /* Section générale */
-        section {
-            max-width: 1200px;
-            margin: 60px auto;
+            max-width: 700px;
             padding: 0 20px;
         }
 
-        h2 {
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-primary);
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--color-primary);
+        }
+
+        /* Section */
+        section {
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
-            color: #8B4513;
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 15px;
+            margin-bottom: 80px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #D2691E, #ff6b35);
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        /* Galerie de produits */
+        .section-header p {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2px;
+            background: rgba(0,0,0,0.05);
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--color-white);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #FFE4B5, #DEB887);
+            aspect-ratio: 4/3;
+            background: var(--color-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(248,246,243,0.3));
+        }
+
+        .product-image span {
+            font-size: 5rem;
+            position: relative;
+            z-index: 1;
+            filter: grayscale(0.3);
         }
 
         .product-info {
-            padding: 20px;
+            padding: 30px;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .product-info h3 {
-            color: #8B4513;
-            margin-bottom: 10px;
-            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
 
         .product-info p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
 
         .product-price {
-            color: #ff6b35;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-top: 15px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            font-weight: 500;
         }
 
-        /* Section À propos */
-        .about {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        /* About Section */
+        .about-section {
+            background: var(--color-light);
         }
 
         .about-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
         .about-content p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        /* Horaires */
-        .horaires {
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .horaires h3 {
-            font-size: 2rem;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--color-text);
             margin-bottom: 30px;
+            font-weight: 300;
         }
 
-        .horaires-grid {
+        /* Info Grid */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
         }
 
-        .horaire-item {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .horaire-item strong {
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        .info-box {
             text-align: center;
         }
 
-        .contact-info {
+        .info-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .info-box p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .info-box a {
+            color: var(--color-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-accent);
+            transition: all 0.3s;
+            font-weight: 400;
+        }
+
+        .info-box a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Schedule */
+        .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 60px auto 0;
         }
 
-        .contact-box {
+        .schedule-item {
+            text-align: center;
             padding: 30px;
-            background: #fafafa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            background: var(--color-white);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .contact-box:hover {
-            background: #f0f0f0;
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
+        .schedule-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--color-primary);
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
-        .contact-box h3 {
-            color: #8B4513;
-            margin-bottom: 10px;
+        .schedule-item p {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
-        .contact-box a {
-            color: #ff6b35;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* Bouton d'appel flottant */
-        .floating-call-button {
+        /* Call Button */
+        .call-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #ff6b35, #ff5520);
+            bottom: 40px;
+            right: 40px;
+            width: 65px;
+            height: 65px;
+            background: var(--color-primary);
             color: white;
-            width: 70px;
-            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             text-decoration: none;
-            box-shadow: 0 5px 25px rgba(255,107,53,0.5);
-            z-index: 999;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 20px rgba(44,24,16,0.2);
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            z-index: 999;
         }
 
-        .floating-call-button:hover {
+        .call-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 35px rgba(255,107,53,0.7);
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 5px 25px rgba(255,107,53,0.5);
-            }
-            50% {
-                box-shadow: 0 5px 40px rgba(255,107,53,0.8);
-            }
+            box-shadow: 0 6px 30px rgba(44,24,16,0.3);
         }
 
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: var(--color-primary);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 40px 30px;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            font-weight: 300;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .header-content {
-                justify-content: center;
-                text-align: center;
+            .nav-container {
+                padding: 0 20px;
+                height: 70px;
             }
 
             .logo {
-                font-size: 1.5rem;
-                width: 100%;
-                margin-bottom: 10px;
+                font-size: 1.3rem;
             }
 
-            .contact-header {
-                justify-content: center;
+            .nav-contact {
+                gap: 15px;
+                font-size: 0.8rem;
+            }
+
+            .nav-contact span:last-child {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 70px;
+                height: 60vh;
+                min-height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
+                gap: 1px;
             }
 
-            .floating-call-button {
+            .product-info {
+                padding: 25px;
+            }
+
+            .info-grid,
+            .schedule-grid {
+                gap: 30px;
+            }
+
+            .call-button {
                 width: 60px;
                 height: 60px;
-                font-size: 1.7rem;
-                bottom: 20px;
-                right: 20px;
+                bottom: 25px;
+                right: 25px;
+                font-size: 1.4rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 60px 20px;
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
             }
 
             .cta-button {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-
-            .contact-item {
-                font-size: 0.85rem;
+                padding: 14px 30px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">🥖 Boulangerie du Village</div>
-            <div class="contact-header">
-                <div class="contact-item">
-                    <span>📞</span>
-                    <a href="tel:0787326499" style="color: white; text-decoration: none;">07 87 32 64 99</a>
-                </div>
-                <div class="contact-item">
-                    <span>✉️</span>
-                    <span>contact@boulangerie.fr</span>
-                </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LA MAISON DU PAIN</div>
+            <div class="nav-contact">
+                <a href="tel:0787326499">07 87 32 64 99</a>
+                <span>•</span>
+                <span>contact@maisonpain.fr</span>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <h1>Bienvenue à la Boulangerie Artisanale</h1>
-        <p>Des produits frais et faits maison chaque jour</p>
-        <a href="tel:0787326499" class="cta-button">📞 Appelez-nous</a>
+        <div class="hero-content">
+            <h1>L'art du pain artisanal</h1>
+            <p class="hero-subtitle">Savoir-faire traditionnel et passion du goût authentique</p>
+            <a href="tel:0787326499" class="cta-button">
+                <span>Nous contacter</span>
+            </a>
+        </div>
     </section>
 
-    <!-- Produits -->
-    <section id="produits">
-        <h2>Nos Spécialités</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">🥐</div>
-                <div class="product-info">
-                    <h3>Croissants</h3>
-                    <p>Croissants au beurre pur, dorés et croustillants, préparés selon la tradition française.</p>
-                    <div class="product-price">1,20€</div>
-                </div>
+    <!-- Products -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos créations</h2>
+                <p>Chaque produit est façonné avec soin dans le respect des traditions boulangères</p>
             </div>
-
-            <div class="product-card">
-                <div class="product-image">🍞</div>
-                <div class="product-info">
-                    <h3>Pain Tradition</h3>
-                    <p>Notre pain tradition, cuit au feu de bois, avec une croûte croustillante et une mie moelleuse.</p>
-                    <div class="product-price">1,50€</div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🥐</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Viennoiserie</div>
+                        <h3>Croissant pur beurre</h3>
+                        <p>Feuilletage doré et croustillant, préparé avec du beurre AOP de haute qualité.</p>
+                        <div class="product-price">1,20 €</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">🎂</div>
-                <div class="product-info">
-                    <h3>Gâteaux sur Mesure</h3>
-                    <p>Créations personnalisées pour vos événements : anniversaires, mariages, baptêmes.</p>
-                    <div class="product-price">Sur devis</div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🍞</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pain</div>
+                        <h3>Pain tradition</h3>
+                        <p>Fabriqué selon les méthodes ancestrales avec une longue fermentation naturelle.</p>
+                        <div class="product-price">1,50 €</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">🥖</div>
-                <div class="product-info">
-                    <h3>Baguette</h3>
-                    <p>La baguette classique française, croustillante à l'extérieur et fondante à l'intérieur.</p>
-                    <div class="product-price">0,95€</div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🎂</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pâtisserie</div>
+                        <h3>Créations sur mesure</h3>
+                        <p>Gâteaux personnalisés pour vos événements exceptionnels et moments de partage.</p>
+                        <div class="product-price">Sur devis</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">🍰</div>
-                <div class="product-info">
-                    <h3>Pâtisseries</h3>
-                    <p>Large sélection de pâtisseries : éclairs, tartes, macarons, mille-feuilles et bien plus.</p>
-                    <div class="product-price">À partir de 3,50€</div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🥖</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pain</div>
+                        <h3>Baguette classique</h3>
+                        <p>L'authentique baguette française avec sa croûte dorée et sa mie alvéolée.</p>
+                        <div class="product-price">0,95 €</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">🥨</div>
-                <div class="product-info">
-                    <h3>Viennoiseries</h3>
-                    <p>Pain au chocolat, pain aux raisins, chaussons aux pommes... Tous faits maison !</p>
-                    <div class="product-price">1,30€</div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🍰</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pâtisserie</div>
+                        <h3>Pâtisseries fines</h3>
+                        <p>Éclairs, tartes aux fruits de saison, macarons et entremets délicats.</p>
+                        <div class="product-price">À partir de 3,50 €</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>🥨</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Viennoiserie</div>
+                        <h3>Viennoiseries maison</h3>
+                        <p>Pain au chocolat, pain aux raisins et chaussons aux pommes artisanaux.</p>
+                        <div class="product-price">1,30 €</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- À propos -->
-    <section>
-        <div class="about">
+    <!-- About -->
+    <section class="about-section">
+        <div class="container">
             <div class="about-content">
-                <h2>Notre Histoire</h2>
-                <p>Depuis plus de 20 ans, notre boulangerie artisanale perpétue la tradition du savoir-faire français. Chaque jour, nos boulangers se lèvent aux aurores pour vous offrir des produits frais de qualité.</p>
-                <p>Nous sélectionnons rigoureusement nos ingrédients et travaillons avec des producteurs locaux pour garantir l'authenticité et la fraîcheur de nos produits.</p>
-                <p>Venez découvrir notre large gamme de pains, viennoiseries et pâtisseries dans une ambiance chaleureuse et conviviale.</p>
+                <div class="section-header">
+                    <h2>Notre philosophie</h2>
+                </div>
+                <p>Nous perpétuons depuis plus de vingt ans l'excellence du savoir-faire boulanger français. Chaque jour, nos artisans transforment des ingrédients soigneusement sélectionnés en créations authentiques.</p>
+                <p>Notre engagement envers la qualité et le goût se reflète dans chaque produit que nous élaborons, du petit pain du matin à la pièce montée pour vos grandes occasions.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Horaires -->
-    <section>
-        <div class="horaires">
-            <h3>Horaires d'Ouverture</h3>
-            <div class="horaires-grid">
-                <div class="horaire-item">
-                    <strong>Lundi - Vendredi</strong><br>
-                    06h30 - 13h30<br>
-                    15h30 - 19h30
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Horaires d'ouverture</h3>
+                    <p>Du lundi au samedi<br>6h30 - 19h30</p>
+                    <p style="margin-top: 10px;">Dimanche<br>7h00 - 13h00</p>
                 </div>
-                <div class="horaire-item">
-                    <strong>Samedi</strong><br>
-                    06h30 - 19h30<br>
-                    <em>Service continu</em>
+                
+                <div class="info-box">
+                    <h3>Nous contacter</h3>
+                    <p><a href="tel:0787326499">07 87 32 64 99</a></p>
+                    <p style="margin-top: 8px;"><a href="mailto:contact@maisonpain.fr">contact@maisonpain.fr</a></p>
                 </div>
-                <div class="horaire-item">
-                    <strong>Dimanche</strong><br>
-                    07h00 - 13h00<br>
-                    <em>Fermé l'après-midi</em>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="contact-section">
-            <h2>Nous Contacter</h2>
-            <div class="contact-info">
-                <div class="contact-box">
-                    <div class="contact-icon">📞</div>
-                    <h3>Téléphone</h3>
-                    <a href="tel:0787326499">07 87 32 64 99</a>
-                    <p style="margin-top: 10px; color: #666;">Commandes & Renseignements</p>
-                </div>
-
-                <div class="contact-box">
-                    <div class="contact-icon">✉️</div>
-                    <h3>Email</h3>
-                    <a href="mailto:contact@boulangerie.fr">contact@boulangerie.fr</a>
-                    <p style="margin-top: 10px; color: #666;">Réponse sous 24h</p>
-                </div>
-
-                <div class="contact-box">
-                    <div class="contact-icon">📍</div>
-                    <h3>Adresse</h3>
-                    <p style="color: #333; font-weight: bold;">12 Rue de la Boulangerie</p>
-                    <p style="color: #666;">75000 Paris, France</p>
+                
+                <div class="info-box">
+                    <h3>Notre adresse</h3>
+                    <p>12 Rue de la Boulangerie<br>75000 Paris</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bouton d'appel flottant -->
-    <a href="tel:0787326499" class="floating-call-button" title="Appelez-nous">
-        📞
+    <!-- Call Button -->
+    <a href="tel:0787326499" class="call-button" aria-label="Appeler">
+        <span>📞</span>
     </a>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Boulangerie Artisanale du Village - Tous droits réservés</p>
-        <p>Fait avec ❤️ et farine de qualité</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#produits">Nos produits</a>
+                <a href="#about">À propos</a>
+                <a href="tel:0787326499">Contact</a>
+                <a href="#">Mentions légales</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 La Maison du Pain — Boulangerie artisanale</p>
+            </div>
+        </div>
     </footer>
 
 </body>
