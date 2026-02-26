@@ -330,6 +330,29 @@
             box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
         }
 
+        .custom-select {
+            position: relative;
+        }
+
+        /* Bouton Voir plus */
+        .load-more-btn {
+            padding: 15px 50px;
+            background: transparent;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
         .product-info {
             padding: 30px;
         }
@@ -682,23 +705,29 @@
                     <button class="category-btn" data-category="pain">Pains</button>
                     <button class="category-btn" data-category="viennoiserie">Viennoiseries</button>
                     <button class="category-btn" data-category="patisserie">Pâtisseries</button>
-                    <button class="category-btn" data-category="special">Spécialités</button>
+                    <button class="category-btn" data-category="snacking">Snacking</button>
                 </div>
                 
                 <div class="sort-container">
-                    <label for="sortSelect">Trier par :</label>
-                    <select id="sortSelect">
-                        <option value="default">Par défaut</option>
-                        <option value="name-asc">Nom (A-Z)</option>
-                        <option value="name-desc">Nom (Z-A)</option>
-                        <option value="price-asc">Prix croissant</option>
-                        <option value="price-desc">Prix décroissant</option>
-                    </select>
+                    <label for="sortSelect">Trier par</label>
+                    <div class="custom-select">
+                        <select id="sortSelect">
+                            <option value="default">Nos suggestions</option>
+                            <option value="name-asc">Alphabétique (A → Z)</option>
+                            <option value="name-desc">Alphabétique (Z → A)</option>
+                            <option value="price-asc">Prix (croissant)</option>
+                            <option value="price-desc">Prix (décroissant)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <div class="products-grid" id="productsGrid">
                 <!-- Les produits seront générés par JavaScript -->
+            </div>
+            
+            <div id="loadMoreContainer" style="text-align: center; margin-top: 50px;">
+                <button id="loadMoreBtn" class="load-more-btn">Voir plus de produits</button>
             </div>
             
             <div id="noResults" style="display: none; text-align: center; padding: 60px 20px; color: var(--color-text-light);">
@@ -709,200 +738,272 @@
     </section>
 
     <script>
-        // Base de données des produits
+        // Base de données des produits avec vraies images
         const products = [
-            {
-                name: "Croissant pur beurre",
-                category: "viennoiserie",
-                description: "Feuilletage doré et croustillant, préparé avec du beurre AOP de haute qualité.",
-                price: 1.20,
-                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
-            },
-            {
-                name: "Pain au chocolat",
-                category: "viennoiserie",
-                description: "Chocolat noir de qualité enrobé dans un feuilletage croustillant.",
-                price: 1.30,
-                image: "https://images.unsplash.com/photo-1623334044303-241021148842?w=800&q=80"
-            },
-            {
-                name: "Pain aux raisins",
-                category: "viennoiserie",
-                description: "Viennoiserie moelleuse garnie de crème pâtissière et raisins secs.",
-                price: 1.30,
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
-            },
-            {
-                name: "Chausson aux pommes",
-                category: "viennoiserie",
-                description: "Pâte feuilletée garnie de compote de pommes maison.",
-                price: 1.40,
-                image: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=800&q=80"
-            },
+            // PAINS
             {
                 name: "Baguette tradition",
                 category: "pain",
-                description: "Pain traditionnel français avec une croûte dorée et une mie alvéolée.",
+                description: "Pain traditionnel français Label Rouge, cuit au four à pierre avec fermentation longue.",
                 price: 1.20,
                 image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80"
             },
             {
                 name: "Baguette classique",
                 category: "pain",
-                description: "La baguette authentique française, croustillante et savoureuse.",
+                description: "Notre baguette authentique, croustillante à souhait avec une mie aérée.",
                 price: 0.95,
-                image: "https://images.unsplash.com/photo-1508737804141-4c3b688e2546?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
             },
             {
                 name: "Pain de campagne",
                 category: "pain",
-                description: "Pain rustique à la mie dense et savoureuse, parfait pour accompagner vos repas.",
+                description: "Pain rustique au levain naturel, mie dense et savoureuse, se conserve plusieurs jours.",
                 price: 3.50,
                 image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80"
             },
             {
                 name: "Pain complet",
                 category: "pain",
-                description: "Pain aux céréales complètes, riche en fibres et savoureux.",
+                description: "Pain aux farines complètes bio, riche en fibres, idéal pour un petit-déjeuner sain.",
                 price: 3.20,
                 image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=800&q=80"
             },
             {
                 name: "Pain aux céréales",
                 category: "pain",
-                description: "Pain enrichi de graines de tournesol, lin et sésame.",
+                description: "Pain enrichi de graines de tournesol, lin, sésame et pavot pour plus de saveurs.",
                 price: 3.80,
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1585478259715-876acc716757?w=800&q=80"
+            },
+            {
+                name: "Pain de seigle",
+                category: "pain",
+                description: "Pain de seigle pur, caractère affirmé, parfait avec du fromage ou du poisson fumé.",
+                price: 3.60,
+                image: "https://images.unsplash.com/photo-1590083715530-bd64f2863be5?w=800&q=80"
+            },
+            {
+                name: "Fougasse",
+                category: "pain",
+                description: "Spécialité provençale aux olives et herbes de Provence, moelleuse et parfumée.",
+                price: 4.20,
+                image: "https://images.unsplash.com/photo-1608198399988-841b5a8a0b4b?w=800&q=80"
             },
             {
                 name: "Pain de mie",
                 category: "pain",
-                description: "Pain de mie moelleux, idéal pour les toasts et sandwichs.",
-                price: 2.50,
+                description: "Pain de mie moelleux et légèrement sucré, parfait pour toasts et sandwichs.",
+                price: 2.80,
                 image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80"
             },
+
+            // VIENNOISERIES
+            {
+                name: "Croissant pur beurre",
+                category: "viennoiserie",
+                description: "Croissant au beurre AOP Charentes-Poitou, feuilletage doré et croustillant.",
+                price: 1.20,
+                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
+            },
+            {
+                name: "Pain au chocolat",
+                category: "viennoiserie",
+                description: "Deux barres de chocolat noir 70% enrobées dans un feuilletage fondant.",
+                price: 1.35,
+                image: "https://images.unsplash.com/photo-1623334044303-241021148842?w=800&q=80"
+            },
+            {
+                name: "Pain aux raisins",
+                category: "viennoiserie",
+                description: "Escargot feuilleté garni de crème pâtissière vanille et raisins secs moelleux.",
+                price: 1.35,
+                image: "https://images.unsplash.com/photo-1603575448878-868a4f49e728?w=800&q=80"
+            },
+            {
+                name: "Chausson aux pommes",
+                category: "viennoiserie",
+                description: "Pâte feuilletée croustillante garnie de compote de pommes maison légèrement cannelée.",
+                price: 1.50,
+                image: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=800&q=80"
+            },
+            {
+                name: "Brioche tressée",
+                category: "viennoiserie",
+                description: "Brioche artisanale moelleuse au beurre, idéale pour le petit-déjeuner familial.",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1608198399870-0a4c2c0cf2f3?w=800&q=80"
+            },
+            {
+                name: "Kouign-amann",
+                category: "viennoiserie",
+                description: "Spécialité bretonne caramélisée, feuilletage croustillant au beurre demi-sel.",
+                price: 2.20,
+                image: "https://images.unsplash.com/photo-1612182062366-28edd707fde0?w=800&q=80"
+            },
+            {
+                name: "Chouquettes",
+                category: "viennoiserie",
+                description: "Petits choux légers parsemés de sucre perlé. Sachet de 10 pièces.",
+                price: 2.50,
+                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
+            },
+            {
+                name: "Croissant aux amandes",
+                category: "viennoiserie",
+                description: "Croissant fourré de crème d'amandes et recouvert d'amandes effilées grillées.",
+                price: 1.80,
+                image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=80"
+            },
+
+            // PÂTISSERIES
             {
                 name: "Éclair au chocolat",
                 category: "patisserie",
-                description: "Pâte à choux garnie de crème pâtissière au chocolat et glaçage.",
+                description: "Pâte à choux garnie de crème pâtissière chocolat et glaçage fondant.",
                 price: 3.80,
                 image: "https://images.unsplash.com/photo-1612201142855-7873b53f990d?w=800&q=80"
             },
             {
                 name: "Éclair café",
                 category: "patisserie",
-                description: "Éclair fourré de crème au café avec un glaçage fondant.",
+                description: "Éclair fourré de crème mousseline au café arabica avec glaçage café.",
                 price: 3.80,
-                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80"
             },
             {
                 name: "Tarte aux fraises",
                 category: "patisserie",
-                description: "Tarte sablée garnie de crème pâtissière et fraises fraîches.",
+                description: "Pâte sablée bretonne, crème pâtissière vanille bourbon et fraises fraîches.",
                 price: 4.50,
                 image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80"
             },
             {
                 name: "Tarte au citron meringuée",
                 category: "patisserie",
-                description: "Tarte au citron acidulée surmontée d'une meringue légère.",
+                description: "Crème au citron de Menton acidulée surmontée d'une meringue italienne légère.",
                 price: 4.20,
                 image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=800&q=80"
             },
             {
                 name: "Mille-feuille",
                 category: "patisserie",
-                description: "Feuilletage croustillant et crème pâtissière vanille.",
+                description: "Trois couches de pâte feuilletée croustillante et crème pâtissière vanille.",
                 price: 4.00,
-                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1591625426552-89a0e56eddb6?w=800&q=80"
             },
             {
                 name: "Paris-Brest",
                 category: "patisserie",
-                description: "Couronne de pâte à choux garnie de crème mousseline pralinée.",
+                description: "Couronne de pâte à choux pralinée garnie de crème mousseline aux noisettes.",
                 price: 4.80,
-                image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
             },
             {
                 name: "Macaron assortiment",
                 category: "patisserie",
-                description: "Assortiment de 6 macarons aux parfums variés.",
+                description: "Coffret de 6 macarons aux parfums variés : framboise, citron, chocolat, pistache...",
                 price: 9.00,
                 image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=80"
             },
             {
                 name: "Tarte aux pommes",
                 category: "patisserie",
-                description: "Tarte traditionnelle aux pommes avec compote maison.",
-                price: 3.50,
+                description: "Tarte fine aux pommes du verger disposées en rosace, compote maison.",
+                price: 3.80,
                 image: "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800&q=80"
             },
             {
-                name: "Forêt-Noire",
+                name: "Fraisier",
                 category: "patisserie",
-                description: "Gâteau au chocolat, chantilly et cerises noires.",
+                description: "Génoise moelleuse, crème mousseline et fraises fraîches, recouvert de pâte d'amande.",
                 price: 5.50,
-                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1588195538326-c5b1e5b80d82?w=800&q=80"
             },
             {
                 name: "Opéra",
                 category: "patisserie",
-                description: "Gâteau raffiné au café et chocolat en couches alternées.",
+                description: "Biscuit Joconde imbibé de café, ganache chocolat et crème au beurre café.",
                 price: 5.20,
                 image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
             },
             {
                 name: "Flan pâtissier",
                 category: "patisserie",
-                description: "Flan onctueux à la vanille sur pâte sablée.",
+                description: "Flan onctueux à la vanille bourbon sur pâte brisée, recette traditionnelle.",
                 price: 3.20,
-                image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80"
             },
             {
-                name: "Brioche tressée",
-                category: "special",
-                description: "Brioche moelleuse et dorée, idéale pour le petit-déjeuner.",
-                price: 4.50,
-                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80"
+                name: "Religieuse chocolat",
+                category: "patisserie",
+                description: "Deux choux garnis de crème pâtissière chocolat, glaçage et crème au beurre.",
+                price: 4.20,
+                image: "https://images.unsplash.com/photo-1612201142855-7873b53f990d?w=800&q=80"
             },
             {
-                name: "Kouign-amann",
-                category: "special",
-                description: "Spécialité bretonne caramélisée et feuilletée au beurre.",
-                price: 2.20,
-                image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&q=80"
-            },
-            {
-                name: "Chouquettes",
-                category: "special",
-                description: "Petits choux croustillants parsemés de sucre perlé. Sachet de 10.",
-                price: 2.50,
+                name: "Saint-Honoré",
+                category: "patisserie",
+                description: "Fond de pâte feuilletée, choux caramélisés et crème chiboust vanille.",
+                price: 5.50,
                 image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
             },
             {
-                name: "Financier",
-                category: "special",
-                description: "Petit gâteau moelleux aux amandes et beurre noisette.",
-                price: 1.80,
-                image: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
+                name: "Tarte tatin",
+                category: "patisserie",
+                description: "Pommes caramélisées sur pâte feuilletée, servie tiède. Un délice !",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1544384313-24b183f09ffd?w=800&q=80"
+            },
+
+            // SNACKING
+            {
+                name: "Sandwich jambon beurre",
+                category: "snacking",
+                description: "Baguette tradition, jambon blanc de qualité et beurre demi-sel sur salade.",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?w=800&q=80"
             },
             {
-                name: "Cannelé",
-                category: "special",
-                description: "Spécialité bordelaise caramélisée à l'extérieur, moelleuse à l'intérieur.",
-                price: 2.00,
-                image: "https://images.unsplash.com/photo-1612182062366-28edd707fde0?w=800&q=80"
+                name: "Sandwich poulet crudités",
+                category: "snacking",
+                description: "Pain complet, émincés de poulet rôti, tomates, salade et sauce caesar.",
+                price: 5.20,
+                image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&q=80"
             },
             {
-                name: "Gâteau personnalisé",
-                category: "special",
-                description: "Créations sur mesure pour vos événements exceptionnels.",
-                price: 0,
-                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
+                name: "Quiche lorraine",
+                category: "snacking",
+                description: "Pâte brisée maison, appareil œufs-crème, lardons fumés et emmental.",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1601000938365-29c6f3b96396?w=800&q=80"
+            },
+            {
+                name: "Pizza jambon fromage",
+                category: "snacking",
+                description: "Pâte à pizza maison, sauce tomate, jambon blanc et mozzarella fondante.",
+                price: 4.20,
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80"
+            },
+            {
+                name: "Croque-monsieur",
+                category: "snacking",
+                description: "Pain de mie, jambon, béchamel maison et emmental gratiné au four.",
+                price: 4.80,
+                image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80"
+            },
+            {
+                name: "Salade César",
+                category: "snacking",
+                description: "Salade romaine, poulet grillé, parmesan, croûtons et sauce caesar maison.",
+                price: 6.50,
+                image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800&q=80"
             }
         ];
 
         let currentProducts = [...products];
+        let displayedCount = 12; // Nombre de produits affichés initialement
+        const productsPerLoad = 8; // Nombre de produits à charger à chaque clic
 
         // Fonction de similarité (distance de Levenshtein simplifiée)
         function similarity(s1, s2) {
@@ -944,20 +1045,25 @@
             return costs[s2.length];
         }
 
-        // Afficher les produits
-        function renderProducts(productsToShow) {
+        // Afficher les produits avec pagination
+        function renderProducts(productsToShow, limit = displayedCount) {
             const grid = document.getElementById('productsGrid');
             const noResults = document.getElementById('noResults');
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
             
             if (productsToShow.length === 0) {
                 grid.innerHTML = '';
                 noResults.style.display = 'block';
+                loadMoreContainer.style.display = 'none';
                 return;
             }
             
             noResults.style.display = 'none';
             
-            grid.innerHTML = productsToShow.map(product => `
+            const productsToDisplay = productsToShow.slice(0, limit);
+            
+            grid.innerHTML = productsToDisplay.map(product => `
                 <div class="product-card" data-category="${product.category}">
                     <div class="product-image-real">
                         <img src="${product.image}" alt="${product.name}" loading="lazy">
@@ -973,6 +1079,14 @@
                     </div>
                 </div>
             `).join('');
+
+            // Gérer le bouton "Voir plus"
+            if (limit >= productsToShow.length) {
+                loadMoreContainer.style.display = 'none';
+            } else {
+                loadMoreContainer.style.display = 'block';
+                loadMoreBtn.textContent = `Voir plus (${productsToShow.length - limit} restants)`;
+            }
         }
 
         function getCategoryLabel(category) {
@@ -980,10 +1094,16 @@
                 'pain': 'Pain',
                 'viennoiserie': 'Viennoiserie',
                 'patisserie': 'Pâtisserie',
-                'special': 'Spécialité'
+                'snacking': 'Snacking'
             };
             return labels[category] || category;
         }
+
+        // Bouton "Voir plus"
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            displayedCount += productsPerLoad;
+            renderProducts(currentProducts, displayedCount);
+        });
 
         // Filtrer par catégorie
         document.querySelectorAll('.category-btn').forEach(btn => {
@@ -998,6 +1118,7 @@
                     currentProducts = products.filter(p => p.category === category);
                 }
                 
+                displayedCount = 12;
                 applyCurrentSort();
             });
         });
@@ -1028,11 +1149,13 @@
                 });
             }
             
+            displayedCount = 12;
             applyCurrentSort();
         });
 
         // Tri
         document.getElementById('sortSelect').addEventListener('change', function() {
+            displayedCount = 12;
             applyCurrentSort();
         });
 
@@ -1066,7 +1189,8 @@
                     break;
             }
             
-            renderProducts(sortedProducts);
+            currentProducts = sortedProducts;
+            renderProducts(currentProducts, displayedCount);
         }
 
         // Initialisation
