@@ -301,8 +301,13 @@
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2rem;
             pointer-events: none;
+            width: 18px;
+            height: 18px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .category-filters {
@@ -411,6 +416,35 @@
             transition: color 0.3s ease;
         }
 
+        .product-reserve-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .product-reserve-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .product-reserve-btn:active {
+            transform: scale(0.98);
+        }
+
         /* Bouton Voir plus */
         .load-more-btn {
             padding: 15px 50px;
@@ -426,6 +460,218 @@
         }
 
         .load-more-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Créateur de pièce montée */
+        .cake-creator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cake-options {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-group {
+            margin-bottom: 25px;
+        }
+
+        .option-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .cake-select,
+        .cake-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            background: var(--color-white);
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%233E3E3E" d="M1 1l5 5 5-5"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .cake-textarea {
+            background-image: none;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        [data-theme="dark"] .cake-select,
+        [data-theme="dark"] .cake-textarea {
+            background-color: var(--color-light);
+            border-color: rgba(255,255,255,0.1);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23E8E8E8" d="M1 1l5 5 5-5"/></svg>');
+        }
+
+        [data-theme="dark"] .cake-textarea {
+            background-image: none;
+        }
+
+        .cake-select:focus,
+        .cake-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .calculate-btn:hover {
+            background: var(--color-accent);
+        }
+
+        .calculate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .cake-result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 2px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .result-summary {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--color-light);
+            border-radius: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-summary p {
+            font-size: 0.9rem;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .result-summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-summary strong {
+            color: var(--color-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .result-price {
+            text-align: center;
+            padding: 30px 20px;
+            margin: 20px 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .price-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .price-value {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .result-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .action-btn {
+            padding: 15px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .action-call {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .action-call:hover {
+            background: transparent;
+            color: var(--color-primary);
+        }
+
+        .action-email {
+            background: transparent;
+            color: var(--color-primary);
+        }
+
+        .action-email:hover {
             background: var(--color-primary);
             color: white;
         }
@@ -521,6 +767,16 @@
             z-index: 999;
         }
 
+        .call-button::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
         .call-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 30px rgba(44,24,16,0.3);
@@ -582,6 +838,220 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
             font-weight: 300;
+        }
+
+        /* Configurateur Pièce Montée */
+        .piece-montee-configurator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .configurator-form {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            background: var(--color-white);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .form-group select,
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea {
+            background: var(--color-light);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .form-group select:focus,
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            transition: color 0.3s ease;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 16px 40px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .generate-btn:hover:not(:disabled) {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44,24,16,0.2);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .loader {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .configurator-result {
+            background: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--color-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-light) 0%, rgba(212,165,116,0.1) 50%, var(--color-light) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .result-details {
+            padding: 30px;
+        }
+
+        .result-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .result-price {
+            font-size: 2rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .result-description {
+            color: var(--color-text);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 30px;
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn:hover {
+            background: var(--color-accent);
+        }
+
+        .reset-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: var(--color-primary);
+            color: white;
         }
 
         /* Responsive */
@@ -681,6 +1151,12 @@
                 margin-top: 15px;
             }
 
+            .product-reserve-btn {
+                padding: 9px 20px;
+                font-size: 0.85rem;
+                margin-top: 12px;
+            }
+
             .info-grid {
                 gap: 30px;
             }
@@ -761,6 +1237,28 @@
             .info-box p {
                 font-size: 0.9rem;
             }
+
+            .cake-creator {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cake-options,
+            .result-card {
+                padding: 25px;
+            }
+
+            .result-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .price-value {
+                font-size: 2.5rem;
+            }
+
+            .result-actions {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -835,7 +1333,7 @@
             <div class="filters-container">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Rechercher un produit..." />
-                    <span class="search-icon">🔍</span>
+                    <span class="search-icon"></span>
                 </div>
                 
                 <div class="category-filters">
@@ -873,6 +1371,225 @@
         </div>
     </section>
 
+    <!-- Créateur de pièce montée -->
+    <section style="background: var(--color-light); transition: background-color 0.3s ease;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Créez votre pièce montée</h2>
+                <p>Personnalisez votre gâteau selon vos envies et obtenez un devis instantané</p>
+            </div>
+
+            <div class="cake-creator">
+                <div class="cake-options">
+                    <div class="option-group">
+                        <label>Taille du gâteau</label>
+                        <select id="cakeSize" class="cake-select">
+                            <option value="">Choisir une taille</option>
+                            <option value="small">Petit (10-15 personnes)</option>
+                            <option value="medium">Moyen (20-30 personnes)</option>
+                            <option value="large">Grand (40-50 personnes)</option>
+                            <option value="xlarge">Très grand (60+ personnes)</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Nombre d'étages</label>
+                        <select id="cakeLayers" class="cake-select">
+                            <option value="">Choisir le nombre d'étages</option>
+                            <option value="1">1 étage</option>
+                            <option value="2">2 étages</option>
+                            <option value="3">3 étages</option>
+                            <option value="4">4 étages ou plus</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Parfum principal</label>
+                        <select id="cakeFlavor" class="cake-select">
+                            <option value="">Choisir un parfum</option>
+                            <option value="vanilla">Vanille</option>
+                            <option value="chocolate">Chocolat</option>
+                            <option value="strawberry">Fraise</option>
+                            <option value="lemon">Citron</option>
+                            <option value="caramel">Caramel</option>
+                            <option value="coffee">Café</option>
+                            <option value="pistachio">Pistache</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Décoration</label>
+                        <select id="cakeDecoration" class="cake-select">
+                            <option value="">Choisir un style</option>
+                            <option value="simple">Simple et élégant</option>
+                            <option value="floral">Fleurs en sucre</option>
+                            <option value="gold">Détails dorés</option>
+                            <option value="fondant">Pâte à sucre personnalisée</option>
+                            <option value="fruits">Fruits frais</option>
+                            <option value="macarons">Macarons décoratifs</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Occasion spéciale</label>
+                        <select id="cakeOccasion" class="cake-select">
+                            <option value="">Type d'événement</option>
+                            <option value="wedding">Mariage</option>
+                            <option value="birthday">Anniversaire</option>
+                            <option value="baptism">Baptême</option>
+                            <option value="communion">Communion</option>
+                            <option value="anniversary">Anniversaire de mariage</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Informations supplémentaires (optionnel)</label>
+                        <textarea id="cakeNotes" class="cake-textarea" placeholder="Décrivez vos souhaits particuliers, couleurs, thème..."></textarea>
+                    </div>
+
+                    <button id="calculateBtn" class="calculate-btn">
+                        <span class="btn-text">Calculer le prix</span>
+                        <span class="btn-loader" style="display: none;">Calcul en cours...</span>
+                    </button>
+                </div>
+
+                <div class="cake-result" id="cakeResult" style="display: none;">
+                    <div class="result-card">
+                        <h3>Votre devis personnalisé</h3>
+                        <div class="result-summary" id="resultSummary"></div>
+                        <div class="result-price">
+                            <span class="price-label">Prix estimé :</span>
+                            <span class="price-value" id="priceValue">--</span>
+                        </div>
+                        <div class="result-note">
+                            <p style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 15px;">Ce prix est une estimation. Un devis détaillé vous sera fourni après discussion de votre projet.</p>
+                        </div>
+                        <div class="result-actions">
+                            <a href="tel:0787326499" class="action-btn action-call">
+                                Appeler maintenant
+                            </a>
+                            <button id="emailBtn" class="action-btn action-email">
+                                Envoyer par email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pièce Montée Personnalisée -->
+    <section style="background: var(--color-light); transition: background-color 0.3s ease;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Créez votre pièce montée</h2>
+                <p>Concevez la pièce montée de vos rêves avec notre configurateur intelligent</p>
+            </div>
+
+            <div class="piece-montee-configurator">
+                <div class="configurator-form">
+                    <div class="form-group">
+                        <label for="occasion">Occasion</label>
+                        <select id="occasion" required>
+                            <option value="">Sélectionnez une occasion</option>
+                            <option value="mariage">Mariage</option>
+                            <option value="anniversaire">Anniversaire</option>
+                            <option value="bapteme">Baptême</option>
+                            <option value="communion">Communion</option>
+                            <option value="autre">Autre événement</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personnes">Nombre de personnes</label>
+                        <select id="personnes" required>
+                            <option value="">Nombre d'invités</option>
+                            <option value="20">15-20 personnes</option>
+                            <option value="40">30-40 personnes</option>
+                            <option value="60">50-60 personnes</option>
+                            <option value="80">70-80 personnes</option>
+                            <option value="100">90-100 personnes</option>
+                            <option value="150">Plus de 100 personnes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="etages">Nombre d'étages</label>
+                        <select id="etages" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="1">1 étage</option>
+                            <option value="2">2 étages</option>
+                            <option value="3">3 étages</option>
+                            <option value="4">4 étages</option>
+                            <option value="5">5 étages ou plus</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parfums">Parfums souhaités</label>
+                        <select id="parfums" required multiple size="4">
+                            <option value="vanille">Vanille</option>
+                            <option value="chocolat">Chocolat</option>
+                            <option value="fraise">Fraise</option>
+                            <option value="framboise">Framboise</option>
+                            <option value="citron">Citron</option>
+                            <option value="pistache">Pistache</option>
+                            <option value="cafe">Café</option>
+                            <option value="caramel">Caramel</option>
+                        </select>
+                        <small>Maintenez Ctrl (Cmd sur Mac) pour sélectionner plusieurs parfums</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="decoration">Style de décoration</label>
+                        <select id="decoration" required>
+                            <option value="">Sélectionnez un style</option>
+                            <option value="classique">Classique élégant</option>
+                            <option value="moderne">Moderne minimaliste</option>
+                            <option value="romantique">Romantique fleuri</option>
+                            <option value="champetre">Champêtre rustique</option>
+                            <option value="glamour">Glamour doré</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="couleurs">Couleurs principales</label>
+                        <input type="text" id="couleurs" placeholder="Ex: blanc, rose, doré" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="details">Détails particuliers (optionnel)</label>
+                        <textarea id="details" rows="3" placeholder="Fleurs spécifiques, thème, allergies, etc."></textarea>
+                    </div>
+
+                    <button id="generateBtn" class="generate-btn">
+                        <span class="btn-text">Générer ma pièce montée</span>
+                        <span class="btn-loader" style="display: none;">
+                            <span class="loader"></span>
+                            Génération en cours...
+                        </span>
+                    </button>
+                </div>
+
+                <div class="configurator-result" id="resultSection" style="display: none;">
+                    <div class="result-image" id="resultImage">
+                        <div class="image-placeholder">
+                            <div class="shimmer"></div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <h3>Votre pièce montée personnalisée</h3>
+                        <div class="result-price" id="resultPrice"></div>
+                        <div class="result-description" id="resultDescription"></div>
+                        <a href="tel:0787326499" class="contact-btn">Commander par téléphone</a>
+                        <button id="resetBtn" class="reset-btn">Créer une nouvelle pièce montée</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About -->
     <section class="about-section">
         <div class="container">
@@ -900,16 +1617,14 @@
                 <div class="info-box">
                     <h3>Notre adresse</h3>
                     <p><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-primary); text-decoration: none; border-bottom: 1px solid var(--color-accent);">17 Route de Paris<br>14370 Moult-Chicheboville</a></p>
-                    <p style="margin-top: 8px; font-size: 0.85rem;"><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-accent); text-decoration: none;">📍 Voir sur Google Maps</a></p>
+                    <p style="margin-top: 8px; font-size: 0.85rem;"><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-accent); text-decoration: none;">Voir sur Google Maps</a></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Call Button -->
-    <a href="tel:0787326499" class="call-button" aria-label="Appeler">
-        <span>📞</span>
-    </a>
+    <a href="tel:0787326499" class="call-button" aria-label="Appeler"></a>
 
     <!-- Footer -->
     <footer>
@@ -1256,6 +1971,9 @@
                             ${product.price > 0 ? `${product.price.toFixed(2)} €` : 'Sur devis'} 
                             <span style="font-size: 0.8rem; font-weight: 300; color: var(--color-text-light);">(exemple)</span>
                         </div>
+                        <a href="tel:0787326499" class="product-reserve-btn">
+                            Réserver
+                        </a>
                     </div>
                 </div>
             `).join('');
@@ -1368,6 +2086,255 @@
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
+        // Configurateur de pièce montée
+        const generateBtn = document.getElementById("generateBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const resultSection = document.getElementById("resultSection");
+        const btnText = document.querySelector(".btn-text");
+        const btnLoader = document.querySelector(".btn-loader");
+
+        if (generateBtn) {
+            generateBtn.addEventListener("click", async function() {
+                const occasion = document.getElementById("occasion").value;
+                const personnes = document.getElementById("personnes").value;
+                const etages = document.getElementById("etages").value;
+                const parfums = Array.from(document.getElementById("parfums").selectedOptions).map(opt => opt.value);
+                const decoration = document.getElementById("decoration").value;
+                const couleurs = document.getElementById("couleurs").value;
+                const details = document.getElementById("details").value;
+
+                if (!occasion || !personnes || !etages || parfums.length === 0 || !decoration || !couleurs) {
+                    alert("Veuillez remplir tous les champs obligatoires");
+                    return;
+                }
+
+                generateBtn.disabled = true;
+                btnText.style.display = "none";
+                btnLoader.style.display = "flex";
+
+                try {
+                    const prompt = `Tu es un pâtissier expert. Un client veut une pièce montée: Occasion: ${occasion}, Personnes: ${personnes}, Étages: ${etages}, Parfums: ${parfums.join(", ")}, Style: ${decoration}, Couleurs: ${couleurs}. ${details ? `Détails: ${details}` : ""} Réponds en JSON: {"prix": "nombre entre 150-800", "description": "2-3 phrases"}`;
+
+                    const response = await fetch("https://api.anthropic.com/v1/messages", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, messages: [{ role: "user", content: prompt }] })
+                    });
+
+                    const data = await response.json();
+                    let aiResponse = data.content[0].text.trim().replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+                    const result = JSON.parse(aiResponse);
+                    const imageUrl = `https://source.unsplash.com/800x800/?wedding-cake,elegant,${decoration}`;
+                    
+                    document.getElementById("resultPrice").textContent = `${result.prix} € (estimation)`;
+                    document.getElementById("resultDescription").textContent = result.description;
+                    document.getElementById("resultImage").innerHTML = `<img src="${imageUrl}" alt="Pièce montée" />`;
+                    resultSection.style.display = "block";
+                    resultSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                } catch (error) {
+                    alert("Erreur. Contactez-nous au 07 87 32 64 99");
+                } finally {
+                    generateBtn.disabled = false;
+                    btnText.style.display = "block";
+                    btnLoader.style.display = "none";
+                }
+            });
+
+            resetBtn.addEventListener("click", function() {
+                document.getElementById("occasion").value = "";
+                document.getElementById("personnes").value = "";
+                document.getElementById("etages").value = "";
+                document.getElementById("parfums").selectedIndex = -1;
+                document.getElementById("decoration").value = "";
+                document.getElementById("couleurs").value = "";
+                document.getElementById("details").value = "";
+                resultSection.style.display = "none";
+                document.querySelector(".configurator-form").scrollIntoView({ behavior: "smooth" });
+            });
+        }
+        });
+
+        // Créateur de pièce montée
+        const calculateBtn = document.getElementById('calculateBtn');
+        const cakeResult = document.getElementById('cakeResult');
+        const emailBtn = document.getElementById('emailBtn');
+        
+        let currentEstimate = null;
+
+        calculateBtn.addEventListener('click', async function() {
+            const size = document.getElementById('cakeSize').value;
+            const layers = document.getElementById('cakeLayers').value;
+            const flavor = document.getElementById('cakeFlavor').value;
+            const decoration = document.getElementById('cakeDecoration').value;
+            const occasion = document.getElementById('cakeOccasion').value;
+            const notes = document.getElementById('cakeNotes').value;
+
+            if (!size || !layers || !flavor || !decoration) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            // Désactiver le bouton et afficher le loader
+            calculateBtn.disabled = true;
+            document.querySelector('.btn-text').style.display = 'none';
+            document.querySelector('.btn-loader').style.display = 'inline';
+
+            try {
+                // Appel à l'API Claude pour calculer le prix
+                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-sonnet-4-20250514',
+                        max_tokens: 1000,
+                        messages: [{
+                            role: 'user',
+                            content: `Tu es un expert pâtissier français spécialisé dans les pièces montées. Calcule un prix réaliste en euros pour une pièce montée avec ces caractéristiques:
+
+Taille: ${size}
+Étages: ${layers}
+Parfum: ${flavor}
+Décoration: ${decoration}
+Occasion: ${occasion}
+Notes: ${notes || 'Aucune'}
+
+Donne une estimation de prix en tenant compte:
+- Prix de base selon la taille (small: 80-120€, medium: 150-200€, large: 250-350€, xlarge: 400-600€)
+- Supplément par étage supplémentaire (30-50€ par étage au-delà du premier)
+- Coût de la décoration (simple: +0€, floral: +40€, gold: +60€, fondant: +80€, fruits: +30€, macarons: +50€)
+- Majoration pour mariages (+20%)
+
+Réponds UNIQUEMENT au format JSON suivant, sans texte additionnel:
+{
+  "price": nombre_en_euros,
+  "breakdown": {
+    "base": prix_de_base,
+    "layers": coût_étages_supplémentaires,
+    "decoration": coût_décoration,
+    "occasion": majoration_occasion
+  },
+  "details": "brève_explication_personnalisée"
+}`
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                const content = data.content[0].text;
+                
+                // Nettoyer et parser la réponse JSON
+                const jsonMatch = content.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) {
+                    throw new Error('Format de réponse invalide');
+                }
+                
+                const estimate = JSON.parse(jsonMatch[0]);
+                currentEstimate = estimate;
+
+                // Créer les labels en français
+                const sizeLabels = {
+                    small: 'Petit (10-15 personnes)',
+                    medium: 'Moyen (20-30 personnes)',
+                    large: 'Grand (40-50 personnes)',
+                    xlarge: 'Très grand (60+ personnes)'
+                };
+
+                const flavorLabels = {
+                    vanilla: 'Vanille',
+                    chocolate: 'Chocolat',
+                    strawberry: 'Fraise',
+                    lemon: 'Citron',
+                    caramel: 'Caramel',
+                    coffee: 'Café',
+                    pistachio: 'Pistache'
+                };
+
+                const decorationLabels = {
+                    simple: 'Simple et élégant',
+                    floral: 'Fleurs en sucre',
+                    gold: 'Détails dorés',
+                    fondant: 'Pâte à sucre personnalisée',
+                    fruits: 'Fruits frais',
+                    macarons: 'Macarons décoratifs'
+                };
+
+                const occasionLabels = {
+                    wedding: 'Mariage',
+                    birthday: 'Anniversaire',
+                    baptism: 'Baptême',
+                    communion: 'Communion',
+                    anniversary: 'Anniversaire de mariage',
+                    other: 'Autre'
+                };
+
+                // Afficher le résumé
+                document.getElementById('resultSummary').innerHTML = `
+                    <p><strong>Taille :</strong> ${sizeLabels[size]}</p>
+                    <p><strong>Étages :</strong> ${layers} étage${layers > 1 ? 's' : ''}</p>
+                    <p><strong>Parfum :</strong> ${flavorLabels[flavor]}</p>
+                    <p><strong>Décoration :</strong> ${decorationLabels[decoration]}</p>
+                    ${occasion ? `<p><strong>Occasion :</strong> ${occasionLabels[occasion]}</p>` : ''}
+                    ${notes ? `<p style="margin-top: 15px; font-style: italic;">${notes}</p>` : ''}
+                    <p style="margin-top: 15px; color: var(--color-accent);">${estimate.details}</p>
+                `;
+
+                document.getElementById('priceValue').textContent = `${estimate.price}€`;
+                cakeResult.style.display = 'block';
+                
+                // Scroll vers le résultat
+                cakeResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue lors du calcul. Veuillez réessayer ou nous appeler directement.');
+            } finally {
+                // Réactiver le bouton
+                calculateBtn.disabled = false;
+                document.querySelector('.btn-text').style.display = 'inline';
+                document.querySelector('.btn-loader').style.display = 'none';
+            }
+        });
+
+        // Envoi par email
+        emailBtn.addEventListener('click', function() {
+            if (!currentEstimate) return;
+
+            const size = document.getElementById('cakeSize').value;
+            const layers = document.getElementById('cakeLayers').value;
+            const flavor = document.getElementById('cakeFlavor').value;
+            const decoration = document.getElementById('cakeDecoration').value;
+            const occasion = document.getElementById('cakeOccasion').value;
+            const notes = document.getElementById('cakeNotes').value;
+
+            const sizeLabels = {
+                small: 'Petit (10-15 personnes)',
+                medium: 'Moyen (20-30 personnes)',
+                large: 'Grand (40-50 personnes)',
+                xlarge: 'Très grand (60+ personnes)'
+            };
+
+            const subject = 'Demande de devis - Pièce montée';
+            const body = `Bonjour,
+
+Je souhaite obtenir un devis pour une pièce montée avec les caractéristiques suivantes :
+
+Taille : ${sizeLabels[size]}
+Nombre d'étages : ${layers}
+Parfum : ${flavor}
+Décoration : ${decoration}
+${occasion ? `Occasion : ${occasion}` : ''}
+${notes ? `\nInformations supplémentaires :\n${notes}` : ''}
+
+Prix estimé via votre calculateur : ${currentEstimate.price}€
+
+Merci de me recontacter pour confirmer ce devis et discuter des détails.
+
+Cordialement`;
+
+            window.location.href = `mailto:exemple@boulangerie.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
     </script>
 
