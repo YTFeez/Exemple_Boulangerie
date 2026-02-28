@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Maison du Pain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>La Maison du Pain - Boulangerie Artisanale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,30 +13,28 @@
         }
 
         :root {
-            --color-primary: #2C1810;
-            --color-accent: #D4A574;
-            --color-light: #F8F6F3;
-            --color-white: #FFFFFF;
-            --color-text: #3E3E3E;
-            --color-text-light: #6B6B6B;
+            --primary: #2C1810;
+            --accent: #D4A574;
+            --light: #F8F6F3;
+            --white: #FFFFFF;
+            --text: #3E3E3E;
+            --text-light: #6B6B6B;
         }
 
         [data-theme="dark"] {
-            --color-primary: #E8DDD0;
-            --color-accent: #D4A574;
-            --color-light: #1a1410;
-            --color-white: #0f0d0a;
-            --color-text: #E8E8E8;
-            --color-text-light: #B8B8B8;
+            --primary: #E8DDD0;
+            --light: #1a1410;
+            --white: #0f0d0a;
+            --text: #E8E8E8;
+            --text-light: #B8B8B8;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.7;
-            color: var(--color-text);
-            background-color: var(--color-white);
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease;
+            color: var(--text);
+            background: var(--white);
+            transition: background 0.3s;
         }
 
         /* Navigation */
@@ -44,14 +42,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--color-white);
+            background: var(--white);
             z-index: 1000;
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        [data-theme="dark"] nav {
-            border-bottom-color: rgba(255,255,255,0.05);
+            transition: background 0.3s;
         }
 
         .nav-container {
@@ -68,9 +62,8 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             font-weight: 500;
-            color: var(--color-primary);
+            color: var(--primary);
             letter-spacing: 1px;
-            transition: color 0.3s ease;
         }
 
         .nav-contact {
@@ -78,42 +71,27 @@
             gap: 20px;
             align-items: center;
             font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-
-        .nav-contact a {
-            color: var(--color-text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-contact a:hover {
-            color: var(--color-accent);
         }
 
         .theme-toggle {
             background: transparent;
-            border: 1px solid var(--color-primary);
-            color: var(--color-primary);
+            border: 1px solid var(--primary);
+            color: var(--primary);
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0;
+            font-size: 1.1rem;
         }
 
         .theme-toggle:hover {
-            background: var(--color-primary);
-            color: var(--color-white);
-            transform: rotate(20deg);
+            background: var(--primary);
+            color: var(--white);
         }
 
-        .theme-icon {
-            font-size: 1.1rem;
+        .nav-contact a {
+            color: var(--text);
+            text-decoration: none;
         }
 
         /* Hero */
@@ -130,13 +108,6 @@
             justify-content: center;
         }
 
-        [data-theme="dark"] .hero {
-            background: linear-gradient(rgba(15,13,10,0.6), rgba(15,13,10,0.7)), 
-                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
         .hero-content {
             text-align: center;
             max-width: 700px;
@@ -150,7 +121,6 @@
             color: #FFFFFF;
             margin-bottom: 20px;
             letter-spacing: 2px;
-            line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -158,29 +128,23 @@
             font-size: 1.1rem;
             color: #FFFFFF;
             margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--color-accent);
+            display: inline-block;
+            background: var(--accent);
             color: white;
             padding: 16px 40px;
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 400;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--color-accent);
+            transition: all 0.3s;
         }
 
         .cta-button:hover {
             background: transparent;
-            border-color: white;
+            border: 1px solid white;
         }
 
         /* Section */
@@ -202,658 +166,19 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 3rem;
             font-weight: 400;
-            color: var(--color-primary);
+            color: var(--primary);
             margin-bottom: 20px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
         }
 
         .section-header p {
-            color: var(--color-text-light);
+            color: var(--text-light);
             font-size: 1rem;
-            max-width: 600px;
+        }
+
+        /* Configurateur */
+        .configurator {
+            max-width: 1000px;
             margin: 0 auto;
-            font-weight: 300;
-            transition: color 0.3s ease;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2px;
-            background: rgba(0,0,0,0.05);
-        }
-
-        [data-theme="dark"] .products-grid {
-            background: rgba(255,255,255,0.05);
-        }
-
-        .product-card {
-            background: var(--color-white);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .product-image-real {
-            width: 100%;
-            aspect-ratio: 4/3;
-            position: relative;
-            overflow: hidden;
-            background: var(--color-light);
-        }
-
-        .product-image-real img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-image-real img {
-            transform: scale(1.05);
-        }
-
-        /* Filtres et recherche */
-        .filters-container {
-            margin-bottom: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .search-box {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 15px 50px 15px 20px;
-            border: 1px solid rgba(0,0,0,0.1);
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--color-text);
-            background: var(--color-white);
-            transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] .search-box input {
-            background: var(--color-light);
-            border-color: rgba(255,255,255,0.1);
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            width: 18px;
-            height: 18px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .category-filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            padding: 12px 30px;
-            border: 1px solid var(--color-primary);
-            background: transparent;
-            color: var(--color-primary);
-            font-size: 0.9rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .category-btn:hover,
-        .category-btn.active {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .sort-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .sort-container label {
-            font-size: 0.95rem;
-            color: var(--color-text);
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .sort-container select {
-            padding: 10px 40px 10px 15px;
-            border: 1px solid rgba(0,0,0,0.1);
-            font-size: 0.95rem;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--color-text);
-            background: var(--color-white);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%233E3E3E" d="M1 1l5 5 5-5"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        [data-theme="dark"] .sort-container select {
-            background-color: var(--color-light);
-            border-color: rgba(255,255,255,0.1);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23E8E8E8" d="M1 1l5 5 5-5"/></svg>');
-        }
-
-        .sort-container select:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
-        }
-
-        .product-info {
-            padding: 30px;
-        }
-
-        .product-category {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .product-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--color-primary);
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .product-info p {
-            color: var(--color-text-light);
-            font-size: 0.9rem;
-            line-height: 1.7;
-            font-weight: 300;
-            transition: color 0.3s ease;
-        }
-
-        .product-price {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            color: var(--color-primary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .product-reserve-btn {
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: transparent;
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .product-reserve-btn:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .product-reserve-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Bouton Voir plus */
-        .load-more-btn {
-            padding: 15px 50px;
-            background: transparent;
-            border: 1px solid var(--color-primary);
-            color: var(--color-primary);
-            font-size: 0.95rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .load-more-btn:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        /* Créateur de pièce montée */
-        .cake-creator {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cake-options {
-            background: var(--color-white);
-            padding: 40px;
-            border-radius: 2px;
-            transition: background-color 0.3s ease;
-        }
-
-        .option-group {
-            margin-bottom: 25px;
-        }
-
-        .option-group label {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--color-text);
-            margin-bottom: 10px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .cake-select,
-        .cake-textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0,0,0,0.1);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: var(--color-text);
-            background: var(--color-white);
-            transition: all 0.3s ease;
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%233E3E3E" d="M1 1l5 5 5-5"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        .cake-textarea {
-            background-image: none;
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        [data-theme="dark"] .cake-select,
-        [data-theme="dark"] .cake-textarea {
-            background-color: var(--color-light);
-            border-color: rgba(255,255,255,0.1);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23E8E8E8" d="M1 1l5 5 5-5"/></svg>');
-        }
-
-        [data-theme="dark"] .cake-textarea {
-            background-image: none;
-        }
-
-        .cake-select:focus,
-        .cake-textarea:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
-        }
-
-        .calculate-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        .calculate-btn:hover {
-            background: var(--color-accent);
-        }
-
-        .calculate-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .cake-result {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .result-card {
-            background: var(--color-white);
-            padding: 40px;
-            border-radius: 2px;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        .result-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--color-primary);
-            margin-bottom: 25px;
-            text-align: center;
-            transition: color 0.3s ease;
-        }
-
-        .result-summary {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: var(--color-light);
-            border-radius: 2px;
-            transition: background-color 0.3s ease;
-        }
-
-        .result-summary p {
-            font-size: 0.9rem;
-            color: var(--color-text);
-            margin-bottom: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .result-summary p:last-child {
-            margin-bottom: 0;
-        }
-
-        .result-summary strong {
-            color: var(--color-primary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .result-price {
-            text-align: center;
-            padding: 30px 20px;
-            margin: 20px 0;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .price-label {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .price-value {
-            display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--color-accent);
-            font-weight: 500;
-        }
-
-        .result-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .action-btn {
-            padding: 15px 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--color-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-        }
-
-        .action-call {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .action-call:hover {
-            background: transparent;
-            color: var(--color-primary);
-        }
-
-        .action-email {
-            background: transparent;
-            color: var(--color-primary);
-        }
-
-        .action-email:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        /* About Section */
-        .about-section {
-            background: var(--color-light);
-            transition: background-color 0.3s ease;
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: var(--color-text);
-            margin-bottom: 30px;
-            font-weight: 300;
-            transition: color 0.3s ease;
-        }
-
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        .info-box {
-            text-align: center;
-        }
-
-        .info-box h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .info-box p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            font-weight: 300;
-            transition: color 0.3s ease;
-        }
-
-        .info-box a {
-            color: var(--color-primary);
-            text-decoration: none;
-            border-bottom: 1px solid var(--color-accent);
-            transition: all 0.3s;
-            font-weight: 400;
-        }
-
-        .info-box a:hover {
-            color: var(--color-accent);
-        }
-
-        [data-theme="dark"] .info-box a {
-            color: var(--color-text);
-            border-bottom-color: var(--color-accent);
-        }
-
-        [data-theme="dark"] .info-box a:hover {
-            color: var(--color-accent);
-        }
-
-        /* Call Button */
-        .call-button {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 65px;
-            height: 65px;
-            background: var(--color-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.6rem;
-            box-shadow: 0 4px 20px rgba(44,24,16,0.2);
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .call-button::before {
-            content: '';
-            width: 24px;
-            height: 24px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .call-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(44,24,16,0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--color-primary);
-            color: rgba(255,255,255,0.7);
-            padding: 60px 40px 30px;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            font-weight: 300;
-        }
-
-        .footer-links a:hover {
-            color: var(--color-accent);
-        }
-
-        [data-theme="dark"] footer {
-            background: #1a1410;
-        }
-
-        [data-theme="dark"] .footer-links a {
-            color: rgba(232, 232, 232, 0.7);
-        }
-
-        [data-theme="dark"] .footer-links a:hover {
-            color: var(--color-accent);
-        }
-
-        [data-theme="dark"] .footer-bottom {
-            border-top-color: rgba(255,255,255,0.1);
-            color: rgba(232, 232, 232, 0.6);
-        }
-
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
-
-        /* Configurateur Pièce Montée */
-        .piece-montee-configurator {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .configurator-form {
-            background: var(--color-white);
-            padding: 40px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
         }
 
         .form-group {
@@ -864,69 +189,48 @@
             display: block;
             font-size: 0.9rem;
             font-weight: 500;
-            color: var(--color-text);
+            color: var(--text);
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
         }
 
-        .form-group select,
-        .form-group input,
-        .form-group textarea {
+        textarea, input[type="email"] {
             width: 100%;
-            padding: 12px 15px;
+            padding: 15px;
             border: 1px solid rgba(0,0,0,0.1);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: var(--color-text);
-            background: var(--color-white);
-            transition: all 0.3s ease;
-            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--white);
+            transition: all 0.3s;
         }
 
-        [data-theme="dark"] .form-group select,
-        [data-theme="dark"] .form-group input,
-        [data-theme="dark"] .form-group textarea {
-            background: var(--color-light);
+        [data-theme="dark"] textarea,
+        [data-theme="dark"] input {
+            background: var(--light);
             border-color: rgba(255,255,255,0.1);
         }
 
-        .form-group select:focus,
-        .form-group input:focus,
-        .form-group textarea:focus {
+        textarea:focus, input:focus {
             outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(212,165,116,0.1);
-        }
-
-        .form-group small {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-            transition: color 0.3s ease;
+            border-color: var(--accent);
         }
 
         .generate-btn {
             width: 100%;
-            padding: 16px 40px;
-            background: var(--color-primary);
+            padding: 16px;
+            background: var(--primary);
             color: white;
             border: none;
-            font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             font-weight: 500;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-transform: uppercase;
-            margin-top: 10px;
+            transition: all 0.3s;
         }
 
         .generate-btn:hover:not(:disabled) {
-            background: var(--color-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(44,24,16,0.2);
+            background: var(--accent);
         }
 
         .generate-btn:disabled {
@@ -934,14 +238,8 @@
             cursor: not-allowed;
         }
 
-        .btn-loader {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
         .loader {
+            display: inline-block;
             width: 16px;
             height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
@@ -954,18 +252,18 @@
             to { transform: rotate(360deg); }
         }
 
-        .configurator-result {
-            background: var(--color-white);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: background-color 0.3s ease;
+        /* Résultats */
+        .result {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .result-image {
             width: 100%;
             aspect-ratio: 1;
-            background: var(--color-light);
-            position: relative;
+            background: var(--light);
             overflow: hidden;
         }
 
@@ -975,83 +273,180 @@
             object-fit: cover;
         }
 
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--color-light) 0%, rgba(212,165,116,0.1) 50%, var(--color-light) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
         .result-details {
-            padding: 30px;
+            padding: 20px;
         }
 
         .result-details h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--color-primary);
+            font-size: 2rem;
+            color: var(--primary);
             margin-bottom: 20px;
-            transition: color 0.3s ease;
         }
 
         .result-price {
-            font-size: 2rem;
-            color: var(--color-accent);
+            font-size: 2.5rem;
+            color: var(--accent);
             font-weight: 600;
             margin-bottom: 20px;
         }
 
         .result-description {
-            color: var(--color-text);
+            color: var(--text);
             line-height: 1.8;
-            margin-bottom: 25px;
-            transition: color 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .contact-btn {
+        .result-specs {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .action-btn {
             display: block;
             width: 100%;
-            padding: 14px 30px;
-            background: var(--color-primary);
-            color: white;
+            padding: 14px;
             text-align: center;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            margin-bottom: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-call {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-call:hover {
+            background: var(--accent);
+        }
+
+        .btn-email {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-email:hover:not(:disabled) {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-email:disabled {
+            opacity: 0.6;
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+        }
+
+        .btn-reset:hover {
+            background: var(--text-light);
+            color: white;
+        }
+
+        .success-msg {
+            margin-top: 15px;
+            padding: 12px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* About */
+        .about-section {
+            background: var(--light);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .info-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
             margin-bottom: 15px;
         }
 
-        .contact-btn:hover {
-            background: var(--color-accent);
+        .info-box p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
         }
 
-        .reset-btn {
-            display: block;
-            width: 100%;
-            padding: 12px 30px;
-            background: transparent;
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
+        .info-box a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        [data-theme="dark"] .info-box a {
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
+            padding: 40px;
             text-align: center;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .reset-btn:hover {
-            background: var(--color-primary);
-            color: white;
+        [data-theme="dark"] footer {
+            background: #1a1410;
+        }
+
+        /* Call Button */
+        .call-button {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 65px;
+            height: 65px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .call-button::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
+            background-size: contain;
+        }
+
+        .call-button:hover {
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         /* Responsive */
@@ -1067,16 +462,7 @@
 
             .nav-contact {
                 gap: 12px;
-                font-size: 0.75rem;
-            }
-
-            .theme-toggle {
-                width: 34px;
-                height: 34px;
-            }
-
-            .theme-icon {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
 
             .nav-contact span:last-child {
@@ -1087,77 +473,26 @@
                 margin-top: 70px;
                 height: 50vh;
                 min-height: 350px;
-                padding: 60px 20px;
             }
 
             .hero h1 {
                 font-size: 2rem;
-                margin-bottom: 15px;
             }
 
             .hero-subtitle {
                 font-size: 0.95rem;
-                margin-bottom: 25px;
-            }
-
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 0.9rem;
             }
 
             section {
-                padding: 50px 15px;
+                padding: 50px 20px;
             }
 
             .section-header h2 {
-                font-size: 1.9rem;
-                margin-bottom: 10px;
+                font-size: 2rem;
             }
 
-            .section-header p {
-                font-size: 0.9rem;
-            }
-
-            .section-header {
-                margin-bottom: 35px;
-            }
-
-            .products-grid {
+            .result {
                 grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .product-info {
-                padding: 20px;
-            }
-
-            .product-info h3 {
-                font-size: 1.3rem;
-                margin-bottom: 8px;
-            }
-
-            .product-info p {
-                font-size: 0.85rem;
-                line-height: 1.5;
-            }
-
-            .product-category {
-                font-size: 0.7rem;
-                margin-bottom: 8px;
-            }
-
-            .product-price {
-                font-size: 1rem;
-                margin-top: 15px;
-            }
-
-            .product-reserve-btn {
-                padding: 9px 20px;
-                font-size: 0.85rem;
-                margin-top: 12px;
-            }
-
-            .info-grid {
                 gap: 30px;
             }
 
@@ -1166,197 +501,7 @@
                 height: 55px;
                 bottom: 20px;
                 right: 20px;
-                font-size: 1.3rem;
             }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .filters-container {
-                gap: 15px;
-            }
-
-            .search-box input {
-                padding: 12px 45px 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .search-icon {
-                font-size: 1.1rem;
-                right: 15px;
-            }
-
-            .category-filters {
-                gap: 6px;
-            }
-
-            .category-btn {
-                padding: 10px 18px;
-                font-size: 0.8rem;
-            }
-
-            .sort-container {
-                flex-direction: row;
-                gap: 10px;
-                font-size: 0.85rem;
-            }
-
-            .sort-container label {
-                font-size: 0.85rem;
-            }
-
-            .sort-container select {
-                padding: 8px 35px 8px 12px;
-                font-size: 0.85rem;
-            }
-
-            .search-box {
-                max-width: 100%;
-            }
-
-            .load-more-btn {
-                padding: 12px 35px;
-                font-size: 0.85rem;
-            }
-
-            #loadMoreContainer {
-                margin-top: 30px;
-            }
-
-            .about-content p {
-                font-size: 0.95rem;
-                line-height: 1.8;
-            }
-
-            .info-box h3 {
-                font-size: 1.2rem;
-            }
-
-            .info-box p {
-                font-size: 0.9rem;
-            }
-
-            .cake-creator {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .cake-options,
-            .result-card {
-                padding: 25px;
-            }
-
-            .result-card h3 {
-                font-size: 1.6rem;
-            }
-
-            .price-value {
-                font-size: 2.5rem;
-            }
-
-            .result-actions {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.7rem;
-            }
-
-            .hero-subtitle {
-                font-size: 0.9rem;
-            }
-
-            .section-header h2 {
-                font-size: 1.6rem;
-            }
-
-            .category-btn {
-                padding: 8px 14px;
-                font-size: 0.75rem;
-            }
-
-            .product-info {
-                padding: 18px;
-            }
-
-            .product-info h3 {
-                font-size: 1.2rem;
-            }
-
-            .product-info p {
-                font-size: 0.82rem;
-            }
-        }
-
-        .result-specs {
-            background: var(--color-light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .result-specs h4 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.2rem;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .contact-btn svg,
-        .email-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .email-btn {
-            background: transparent;
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
-        }
-
-        .email-btn:hover:not(:disabled) {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .email-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .loader-small {
-            width: 14px;
-            height: 14px;
-            border: 2px solid rgba(44,24,16,0.3);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        .email-success {
-            margin-top: 15px;
-            padding: 12px 20px;
-            background: #d4edda;
-            color: #155724;
-            border-radius: 4px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 500;
         }
     </style>
 </head>
@@ -1367,9 +512,7 @@
         <div class="nav-container">
             <div class="logo">LA MAISON DU PAIN</div>
             <div class="nav-contact">
-                <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
-                    <span class="theme-icon">🌙</span>
-                </button>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
                 <a href="tel:0787326499">07 87 32 64 99</a>
                 <span>•</span>
                 <span>exemple@boulangerie.fr</span>
@@ -1382,243 +525,59 @@
         <div class="hero-content">
             <h1>L'art du pain artisanal</h1>
             <p class="hero-subtitle">Savoir-faire traditionnel et passion du goût authentique</p>
-            <a href="tel:0787326499" class="cta-button">
-                <span>Nous contacter</span>
-            </a>
+            <a href="tel:0787326499" class="cta-button">Nous contacter</a>
         </div>
     </section>
 
-    <!-- Products -->
+    <!-- Configurateur -->
     <section>
         <div class="container">
             <div class="section-header">
-                <h2>Nos créations</h2>
-                <p>Chaque produit est façonné avec soin dans le respect des traditions boulangères</p>
-            </div>
-            
-            <!-- Filtres et recherche -->
-            <div class="filters-container">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Rechercher un produit..." />
-                    <span class="search-icon"></span>
-                </div>
-                
-                <div class="category-filters">
-                    <button class="category-btn active" data-category="tous">Tous</button>
-                    <button class="category-btn" data-category="pain">Pains</button>
-                    <button class="category-btn" data-category="viennoiserie">Viennoiseries</button>
-                    <button class="category-btn" data-category="patisserie">Pâtisseries</button>
-                    <button class="category-btn" data-category="snacking">Snacking</button>
-                </div>
-                
-                <div class="sort-container">
-                    <label for="sortSelect">Trier par</label>
-                    <select id="sortSelect">
-                        <option value="default">Nos suggestions</option>
-                        <option value="name-asc">Alphabétique (A → Z)</option>
-                        <option value="name-desc">Alphabétique (Z → A)</option>
-                        <option value="price-asc">Prix (croissant)</option>
-                        <option value="price-desc">Prix (décroissant)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="products-grid" id="productsGrid">
-                <!-- Les produits seront générés par JavaScript -->
-            </div>
-            
-            <div id="loadMoreContainer" style="text-align: center; margin-top: 50px;">
-                <button id="loadMoreBtn" class="load-more-btn">Voir plus de produits</button>
-            </div>
-            
-            <div id="noResults" style="display: none; text-align: center; padding: 60px 20px; color: var(--color-text-light);">
-                <p style="font-size: 1.2rem;">Aucun produit trouvé</p>
-                <p style="margin-top: 10px;">Essayez une autre recherche ou catégorie</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Créateur de pièce montée -->
-    <section style="background: var(--color-light); transition: background-color 0.3s ease;">
-        <div class="container">
-            <div class="section-header">
                 <h2>Créez votre pièce montée</h2>
-                <p>Personnalisez votre gâteau selon vos envies et obtenez un devis instantané</p>
+                <p>Décrivez la pièce montée de vos rêves en détail</p>
             </div>
 
-            <div class="cake-creator">
-                <div class="cake-options">
-                    <div class="option-group">
-                        <label>Taille du gâteau</label>
-                        <select id="cakeSize" class="cake-select">
-                            <option value="">Choisir une taille</option>
-                            <option value="small">Petit (10-15 personnes)</option>
-                            <option value="medium">Moyen (20-30 personnes)</option>
-                            <option value="large">Grand (40-50 personnes)</option>
-                            <option value="xlarge">Très grand (60+ personnes)</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Nombre d'étages</label>
-                        <select id="cakeLayers" class="cake-select">
-                            <option value="">Choisir le nombre d'étages</option>
-                            <option value="1">1 étage</option>
-                            <option value="2">2 étages</option>
-                            <option value="3">3 étages</option>
-                            <option value="4">4 étages ou plus</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Parfum principal</label>
-                        <select id="cakeFlavor" class="cake-select">
-                            <option value="">Choisir un parfum</option>
-                            <option value="vanilla">Vanille</option>
-                            <option value="chocolate">Chocolat</option>
-                            <option value="strawberry">Fraise</option>
-                            <option value="lemon">Citron</option>
-                            <option value="caramel">Caramel</option>
-                            <option value="coffee">Café</option>
-                            <option value="pistachio">Pistache</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Décoration</label>
-                        <select id="cakeDecoration" class="cake-select">
-                            <option value="">Choisir un style</option>
-                            <option value="simple">Simple et élégant</option>
-                            <option value="floral">Fleurs en sucre</option>
-                            <option value="gold">Détails dorés</option>
-                            <option value="fondant">Pâte à sucre personnalisée</option>
-                            <option value="fruits">Fruits frais</option>
-                            <option value="macarons">Macarons décoratifs</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Occasion spéciale</label>
-                        <select id="cakeOccasion" class="cake-select">
-                            <option value="">Type d'événement</option>
-                            <option value="wedding">Mariage</option>
-                            <option value="birthday">Anniversaire</option>
-                            <option value="baptism">Baptême</option>
-                            <option value="communion">Communion</option>
-                            <option value="anniversary">Anniversaire de mariage</option>
-                            <option value="other">Autre</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Informations supplémentaires (optionnel)</label>
-                        <textarea id="cakeNotes" class="cake-textarea" placeholder="Décrivez vos souhaits particuliers, couleurs, thème..."></textarea>
-                    </div>
-
-                    <button id="calculateBtn" class="calculate-btn">
-                        <span class="btn-text">Calculer le prix</span>
-                        <span class="btn-loader" style="display: none;">Calcul en cours...</span>
-                    </button>
+            <div class="configurator">
+                <div class="form-group">
+                    <label for="description">Décrivez votre pièce montée</label>
+                    <textarea id="description" rows="8" placeholder="Exemple : Je veux une pièce montée de 4 étages pour 80 personnes :
+- Étage 1 (40cm) : chocolat-framboise, décoré de roses blanches
+- Étage 2 (30cm) : vanille-citron, rubans dorés
+- Étage 3 (20cm) : pistache, perles en sucre
+- Étage 4 (15cm) : fraise, figurines de mariés
+Style moderne minimaliste, couleurs blanc et or."></textarea>
                 </div>
 
-                <div class="cake-result" id="cakeResult" style="display: none;">
-                    <div class="result-card">
-                        <h3>Votre devis personnalisé</h3>
-                        <div class="result-summary" id="resultSummary"></div>
-                        <div class="result-price">
-                            <span class="price-label">Prix estimé :</span>
-                            <span class="price-value" id="priceValue">--</span>
-                        </div>
-                        <div class="result-note">
-                            <p style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 15px;">Ce prix est une estimation. Un devis détaillé vous sera fourni après discussion de votre projet.</p>
-                        </div>
-                        <div class="result-actions">
-                            <a href="tel:0787326499" class="action-btn action-call">
-                                Appeler maintenant
-                            </a>
-                            <button id="emailBtn" class="action-btn action-email">
-                                Envoyer par email
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pièce Montée Personnalisée -->
-    <section style="background: var(--color-light); transition: background-color 0.3s ease;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Créez votre pièce montée</h2>
-                <p>Décrivez la pièce montée de vos rêves et laissez notre IA la concevoir pour vous</p>
-            </div>
-
-            <div class="piece-montee-configurator">
-                <div class="configurator-form">
-                    <div class="form-group">
-                        <label for="description">Décrivez votre pièce montée idéale</label>
-                        <textarea id="description" rows="8" placeholder="Exemple : Je souhaite une pièce montée pour mon mariage de 80 personnes. Je veux 4 étages :
-- 1er étage (base) : chocolat-framboise, 40cm de diamètre, décoré de roses blanches
-- 2ème étage : vanille-citron, 30cm, rubans dorés
-- 3ème étage : pistache, 20cm, perles en sucre
-- 4ème étage (sommet) : fraise, 15cm, figurines mariés
-
-Style moderne minimaliste, couleurs blanc et or, pour une ambiance élégante.
-Budget maximum : 600€" required></textarea>
-                        <small>Soyez aussi précis que possible : nombre d'étages, parfums, décorations, couleurs, occasion, nombre de personnes, budget...</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Votre email (pour recevoir le devis)</label>
-                        <input type="email" id="email" placeholder="votre@email.fr" required>
-                    </div>
-
-                    <button id="generateBtn" class="generate-btn">
-                        <span class="btn-text">Générer ma pièce montée</span>
-                        <span class="btn-loader" style="display: none;">
-                            <span class="loader"></span>
-                            Génération en cours...
-                        </span>
-                    </button>
+                <div class="form-group">
+                    <label for="email">Votre email</label>
+                    <input type="email" id="email" placeholder="votre@email.fr">
                 </div>
 
-                <div class="configurator-result" id="resultSection" style="display: none;">
-                    <div class="result-image" id="resultImage">
-                        <div class="image-placeholder">
-                            <div class="shimmer"></div>
-                        </div>
+                <button id="generateBtn" class="generate-btn">
+                    <span id="btnText">Générer ma pièce montée</span>
+                    <span id="btnLoader" class="hidden">
+                        <span class="loader"></span> Génération...
+                    </span>
+                </button>
+
+                <div id="resultSection" class="result hidden">
+                    <div class="result-image">
+                        <img id="resultImage" src="" alt="Pièce montée">
                     </div>
                     <div class="result-details">
-                        <h3>Votre pièce montée personnalisée</h3>
+                        <h3>Votre pièce montée</h3>
                         <div class="result-price" id="resultPrice"></div>
-                        <div class="result-description" id="resultDescription"></div>
+                        <div class="result-description" id="resultDesc"></div>
                         <div class="result-specs" id="resultSpecs"></div>
                         
-                        <div class="action-buttons">
-                            <a href="tel:0787326499" class="contact-btn">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                </svg>
-                                Appeler pour commander
-                            </a>
-                            <button id="sendEmailBtn" class="email-btn">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                                <span class="email-btn-text">Recevoir le devis par email</span>
-                                <span class="email-btn-loader" style="display: none;">
-                                    <span class="loader-small"></span>
-                                    Envoi...
-                                </span>
-                            </button>
-                            <button id="resetBtn" class="reset-btn">Créer une nouvelle pièce montée</button>
-                        </div>
+                        <a href="tel:0787326499" class="action-btn btn-call">Appeler pour commander</a>
+                        <button id="sendEmailBtn" class="action-btn btn-email">
+                            <span id="emailText">Recevoir le devis par email</span>
+                            <span id="emailLoader" class="hidden"><span class="loader"></span> Envoi...</span>
+                        </button>
+                        <button id="resetBtn" class="action-btn btn-reset">Nouvelle pièce montée</button>
                         
-                        <div id="emailSuccess" class="email-success" style="display: none;">
-                            ✓ Devis envoyé à votre email !
-                        </div>
+                        <div id="emailSuccess" class="success-msg hidden"></div>
                     </div>
                 </div>
             </div>
@@ -1628,834 +587,158 @@ Budget maximum : 600€" required></textarea>
     <!-- About -->
     <section class="about-section">
         <div class="container">
-            <div class="about-content">
-                <div class="section-header">
-                    <h2>Notre philosophie</h2>
-                </div>
-                <p>Nous perpétuons depuis plus de vingt ans l'excellence du savoir-faire boulanger français. Chaque jour, nos artisans transforment des ingrédients soigneusement sélectionnés en créations authentiques.</p>
-                <p>Notre engagement envers la qualité et le goût se reflète dans chaque produit que nous élaborons, du petit pain du matin à la pièce montée pour vos grandes occasions.</p>
+            <div class="section-header">
+                <h2>Notre philosophie</h2>
+                <p>Excellence du savoir-faire boulanger français depuis plus de 20 ans</p>
             </div>
             
             <div class="info-grid">
                 <div class="info-box">
-                    <h3>Horaires d'ouverture</h3>
-                    <p>Du lundi au samedi<br>6h30 - 19h30<br><span style="font-size: 0.85rem; color: var(--color-accent);">(exemple)</span></p>
-                    <p style="margin-top: 10px;">Dimanche<br>7h00 - 13h00</p>
+                    <h3>Horaires</h3>
+                    <p>Lundi - Samedi : 6h30 - 19h30<br>Dimanche : 7h00 - 13h00</p>
                 </div>
                 
                 <div class="info-box">
-                    <h3>Nous contacter</h3>
-                    <p><a href="tel:0787326499">07 87 32 64 99</a></p>
-                    <p style="margin-top: 8px;"><a href="mailto:exemple@boulangerie.fr">exemple@boulangerie.fr</a></p>
+                    <h3>Contact</h3>
+                    <p><a href="tel:0787326499">07 87 32 64 99</a><br><a href="mailto:exemple@boulangerie.fr">exemple@boulangerie.fr</a></p>
                 </div>
                 
                 <div class="info-box">
-                    <h3>Notre adresse</h3>
-                    <p><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-primary); text-decoration: none; border-bottom: 1px solid var(--color-accent);">17 Route de Paris<br>14370 Moult-Chicheboville</a></p>
-                    <p style="margin-top: 8px; font-size: 0.85rem;"><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank" style="color: var(--color-accent); text-decoration: none;">Voir sur Google Maps</a></p>
+                    <h3>Adresse</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=17+Rte+de+Paris,+14370+Moult-Chicheboville" target="_blank">17 Route de Paris<br>14370 Moult-Chicheboville</a></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Call Button -->
-    <a href="tel:0787326499" class="call-button" aria-label="Appeler"></a>
+    <a href="tel:0787326499" class="call-button"></a>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#produits">Nos produits</a>
-                <a href="#about">À propos</a>
-                <a href="tel:0787326499">Contact</a>
-                <a href="#">Mentions légales</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 La Maison du Pain — Boulangerie artisanale</p>
-            </div>
-        </div>
+        <p>&copy; 2025 La Maison du Pain — Boulangerie artisanale</p>
     </footer>
 
     <script>
-        // Base de données des produits avec vraies images
-        const products = [
-            // PAINS
-            {
-                name: "Baguette tradition",
-                category: "pain",
-                description: "Pain traditionnel français Label Rouge, cuit au four à pierre avec fermentation longue.",
-                price: 1.20,
-                image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80"
-            },
-            {
-                name: "Baguette classique",
-                category: "pain",
-                description: "Notre baguette authentique, croustillante à souhait avec une mie aérée.",
-                price: 0.95,
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
-            },
-            {
-                name: "Pain de campagne",
-                category: "pain",
-                description: "Pain rustique au levain naturel, mie dense et savoureuse, se conserve plusieurs jours.",
-                price: 3.50,
-                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80"
-            },
-            {
-                name: "Pain complet",
-                category: "pain",
-                description: "Pain aux farines complètes bio, riche en fibres, idéal pour un petit-déjeuner sain.",
-                price: 3.20,
-                image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=800&q=80"
-            },
-            {
-                name: "Pain aux céréales",
-                category: "pain",
-                description: "Pain enrichi de graines de tournesol, lin, sésame et pavot pour plus de saveurs.",
-                price: 3.80,
-                image: "https://images.unsplash.com/photo-1585478259715-876acc716757?w=800&q=80"
-            },
-            {
-                name: "Pain de seigle",
-                category: "pain",
-                description: "Pain de seigle pur, caractère affirmé, parfait avec du fromage ou du poisson fumé.",
-                price: 3.60,
-                image: "https://images.unsplash.com/photo-1590083715530-bd64f2863be5?w=800&q=80"
-            },
-            {
-                name: "Fougasse",
-                category: "pain",
-                description: "Spécialité provençale aux olives et herbes de Provence, moelleuse et parfumée.",
-                price: 4.20,
-                image: "https://images.unsplash.com/photo-1608198399988-841b5a8a0b4b?w=800&q=80"
-            },
-            {
-                name: "Pain de mie",
-                category: "pain",
-                description: "Pain de mie moelleux et légèrement sucré, parfait pour toasts et sandwichs.",
-                price: 2.80,
-                image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80"
-            },
-
-            // VIENNOISERIES
-            {
-                name: "Croissant pur beurre",
-                category: "viennoiserie",
-                description: "Croissant au beurre AOP Charentes-Poitou, feuilletage doré et croustillant.",
-                price: 1.20,
-                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
-            },
-            {
-                name: "Pain au chocolat",
-                category: "viennoiserie",
-                description: "Deux barres de chocolat noir 70% enrobées dans un feuilletage fondant.",
-                price: 1.35,
-                image: "https://images.unsplash.com/photo-1623334044303-241021148842?w=800&q=80"
-            },
-            {
-                name: "Pain aux raisins",
-                category: "viennoiserie",
-                description: "Escargot feuilleté garni de crème pâtissière vanille et raisins secs moelleux.",
-                price: 1.35,
-                image: "https://images.unsplash.com/photo-1603575448878-868a4f49e728?w=800&q=80"
-            },
-            {
-                name: "Chausson aux pommes",
-                category: "viennoiserie",
-                description: "Pâte feuilletée croustillante garnie de compote de pommes maison légèrement cannelée.",
-                price: 1.50,
-                image: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=800&q=80"
-            },
-            {
-                name: "Brioche tressée",
-                category: "viennoiserie",
-                description: "Brioche artisanale moelleuse au beurre, idéale pour le petit-déjeuner familial.",
-                price: 4.50,
-                image: "https://images.unsplash.com/photo-1608198399870-0a4c2c0cf2f3?w=800&q=80"
-            },
-            {
-                name: "Kouign-amann",
-                category: "viennoiserie",
-                description: "Spécialité bretonne caramélisée, feuilletage croustillant au beurre demi-sel.",
-                price: 2.20,
-                image: "https://images.unsplash.com/photo-1612182062366-28edd707fde0?w=800&q=80"
-            },
-            {
-                name: "Chouquettes",
-                category: "viennoiserie",
-                description: "Petits choux légers parsemés de sucre perlé. Sachet de 10 pièces.",
-                price: 2.50,
-                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
-            },
-            {
-                name: "Croissant aux amandes",
-                category: "viennoiserie",
-                description: "Croissant fourré de crème d'amandes et recouvert d'amandes effilées grillées.",
-                price: 1.80,
-                image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=80"
-            },
-
-            // PÂTISSERIES
-            {
-                name: "Éclair au chocolat",
-                category: "patisserie",
-                description: "Pâte à choux garnie de crème pâtissière chocolat et glaçage fondant.",
-                price: 3.80,
-                image: "https://images.unsplash.com/photo-1612201142855-7873b53f990d?w=800&q=80"
-            },
-            {
-                name: "Éclair café",
-                category: "patisserie",
-                description: "Éclair fourré de crème mousseline au café arabica avec glaçage café.",
-                price: 3.80,
-                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80"
-            },
-            {
-                name: "Tarte aux fraises",
-                category: "patisserie",
-                description: "Pâte sablée bretonne, crème pâtissière vanille bourbon et fraises fraîches.",
-                price: 4.50,
-                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80"
-            },
-            {
-                name: "Tarte au citron meringuée",
-                category: "patisserie",
-                description: "Crème au citron de Menton acidulée surmontée d'une meringue italienne légère.",
-                price: 4.20,
-                image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=800&q=80"
-            },
-            {
-                name: "Mille-feuille",
-                category: "patisserie",
-                description: "Trois couches de pâte feuilletée croustillante et crème pâtissière vanille.",
-                price: 4.00,
-                image: "https://images.unsplash.com/photo-1591625426552-89a0e56eddb6?w=800&q=80"
-            },
-            {
-                name: "Paris-Brest",
-                category: "patisserie",
-                description: "Couronne de pâte à choux pralinée garnie de crème mousseline aux noisettes.",
-                price: 4.80,
-                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
-            },
-            {
-                name: "Macaron assortiment",
-                category: "patisserie",
-                description: "Coffret de 6 macarons aux parfums variés : framboise, citron, chocolat, pistache...",
-                price: 9.00,
-                image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=80"
-            },
-            {
-                name: "Tarte aux pommes",
-                category: "patisserie",
-                description: "Tarte fine aux pommes du verger disposées en rosace, compote maison.",
-                price: 3.80,
-                image: "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800&q=80"
-            },
-            {
-                name: "Fraisier",
-                category: "patisserie",
-                description: "Génoise moelleuse, crème mousseline et fraises fraîches, recouvert de pâte d'amande.",
-                price: 5.50,
-                image: "https://images.unsplash.com/photo-1588195538326-c5b1e5b80d82?w=800&q=80"
-            },
-            {
-                name: "Opéra",
-                category: "patisserie",
-                description: "Biscuit Joconde imbibé de café, ganache chocolat et crème au beurre café.",
-                price: 5.20,
-                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80"
-            },
-            {
-                name: "Flan pâtissier",
-                category: "patisserie",
-                description: "Flan onctueux à la vanille bourbon sur pâte brisée, recette traditionnelle.",
-                price: 3.20,
-                image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80"
-            },
-            {
-                name: "Religieuse chocolat",
-                category: "patisserie",
-                description: "Deux choux garnis de crème pâtissière chocolat, glaçage et crème au beurre.",
-                price: 4.20,
-                image: "https://images.unsplash.com/photo-1612201142855-7873b53f990d?w=800&q=80"
-            },
-            {
-                name: "Saint-Honoré",
-                category: "patisserie",
-                description: "Fond de pâte feuilletée, choux caramélisés et crème chiboust vanille.",
-                price: 5.50,
-                image: "https://images.unsplash.com/photo-1587241321921-91eba504fe9b?w=800&q=80"
-            },
-            {
-                name: "Tarte tatin",
-                category: "patisserie",
-                description: "Pommes caramélisées sur pâte feuilletée, servie tiède. Un délice !",
-                price: 4.50,
-                image: "https://images.unsplash.com/photo-1544384313-24b183f09ffd?w=800&q=80"
-            },
-
-            // SNACKING
-            {
-                name: "Sandwich jambon beurre",
-                category: "snacking",
-                description: "Baguette tradition, jambon blanc de qualité et beurre demi-sel sur salade.",
-                price: 4.50,
-                image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?w=800&q=80"
-            },
-            {
-                name: "Sandwich poulet crudités",
-                category: "snacking",
-                description: "Pain complet, émincés de poulet rôti, tomates, salade et sauce caesar.",
-                price: 5.20,
-                image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&q=80"
-            },
-            {
-                name: "Quiche lorraine",
-                category: "snacking",
-                description: "Pâte brisée maison, appareil œufs-crème, lardons fumés et emmental.",
-                price: 3.80,
-                image: "https://images.unsplash.com/photo-1601000938365-29c6f3b96396?w=800&q=80"
-            },
-            {
-                name: "Pizza jambon fromage",
-                category: "snacking",
-                description: "Pâte à pizza maison, sauce tomate, jambon blanc et mozzarella fondante.",
-                price: 4.20,
-                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80"
-            },
-            {
-                name: "Croque-monsieur",
-                category: "snacking",
-                description: "Pain de mie, jambon, béchamel maison et emmental gratiné au four.",
-                price: 4.80,
-                image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80"
-            },
-            {
-                name: "Salade César",
-                category: "snacking",
-                description: "Salade romaine, poulet grillé, parmesan, croûtons et sauce caesar maison.",
-                price: 6.50,
-                image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800&q=80"
-            }
-        ];
-
-        let currentProducts = [...products];
-        let displayedCount = window.innerWidth <= 768 ? 6 : 12;
-
-        function similarity(s1, s2) {
-            s1 = s1.toLowerCase();
-            s2 = s2.toLowerCase();
-            if (s1.includes(s2) || s2.includes(s1)) return 0.9;
-            let longer = s1.length > s2.length ? s1 : s2;
-            let shorter = s1.length > s2.length ? s2 : s1;
-            let longerLength = longer.length;
-            if (longerLength === 0) return 1.0;
-            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
-        }
-
-        function editDistance(s1, s2) {
-            s1 = s1.toLowerCase();
-            s2 = s2.toLowerCase();
-            let costs = [];
-            for (let i = 0; i <= s1.length; i++) {
-                let lastValue = i;
-                for (let j = 0; j <= s2.length; j++) {
-                    if (i === 0) {
-                        costs[j] = j;
-                    } else if (j > 0) {
-                        let newValue = costs[j - 1];
-                        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
-                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
-                        }
-                        costs[j - 1] = lastValue;
-                        lastValue = newValue;
-                    }
-                }
-                if (i > 0) costs[s2.length] = lastValue;
-            }
-            return costs[s2.length];
-        }
-
-        function renderProducts(productsToShow, limit = displayedCount) {
-            const grid = document.getElementById('productsGrid');
-            const noResults = document.getElementById('noResults');
-            const loadMoreContainer = document.getElementById('loadMoreContainer');
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            
-            if (productsToShow.length === 0) {
-                grid.innerHTML = '';
-                noResults.style.display = 'block';
-                loadMoreContainer.style.display = 'none';
-                return;
-            }
-            
-            noResults.style.display = 'none';
-            const productsToDisplay = productsToShow.slice(0, limit);
-            
-            grid.innerHTML = productsToDisplay.map(product => `
-                <div class="product-card" data-category="${product.category}">
-                    <div class="product-image-real">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">${getCategoryLabel(product.category)}</div>
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <div class="product-price">
-                            ${product.price > 0 ? `${product.price.toFixed(2)} €` : 'Sur devis'} 
-                            <span style="font-size: 0.8rem; font-weight: 300; color: var(--color-text-light);">(exemple)</span>
-                        </div>
-                        <a href="tel:0787326499" class="product-reserve-btn">
-                            Réserver
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-
-            if (limit >= productsToShow.length) {
-                loadMoreContainer.style.display = 'none';
-            } else {
-                loadMoreContainer.style.display = 'block';
-                loadMoreBtn.textContent = `Voir plus (${productsToShow.length - limit} restants)`;
-            }
-        }
-
-        function getCategoryLabel(category) {
-            const labels = {
-                'pain': 'Pain',
-                'viennoiserie': 'Viennoiserie',
-                'patisserie': 'Pâtisserie',
-                'snacking': 'Snacking'
-            };
-            return labels[category] || category;
-        }
-
-        document.getElementById('loadMoreBtn').addEventListener('click', function() {
-            const productsToAdd = window.innerWidth <= 768 ? 4 : 8;
-            displayedCount += productsToAdd;
-            renderProducts(currentProducts, displayedCount);
-        });
-
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const category = this.dataset.category;
-                currentProducts = category === 'tous' ? [...products] : products.filter(p => p.category === category);
-                displayedCount = window.innerWidth <= 768 ? 6 : 12;
-                applyCurrentSort();
-            });
-        });
-
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.trim();
-            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
-            
-            if (searchTerm === '') {
-                currentProducts = activeCategory === 'tous' ? [...products] : products.filter(p => p.category === activeCategory);
-            } else {
-                const baseProducts = activeCategory === 'tous' ? products : products.filter(p => p.category === activeCategory);
-                currentProducts = baseProducts.filter(product => {
-                    const nameSimilarity = similarity(product.name, searchTerm);
-                    const descSimilarity = similarity(product.description, searchTerm);
-                    return nameSimilarity > 0.5 || descSimilarity > 0.4;
-                }).sort((a, b) => {
-                    const simA = Math.max(similarity(a.name, searchTerm), similarity(a.description, searchTerm) * 0.7);
-                    const simB = Math.max(similarity(b.name, searchTerm), similarity(b.description, searchTerm) * 0.7);
-                    return simB - simA;
-                });
-            }
-            displayedCount = window.innerWidth <= 768 ? 6 : 12;
-            applyCurrentSort();
-        });
-
-        document.getElementById('sortSelect').addEventListener('change', function() {
-            displayedCount = window.innerWidth <= 768 ? 6 : 12;
-            applyCurrentSort();
-        });
-
-        function applyCurrentSort() {
-            const sortValue = document.getElementById('sortSelect').value;
-            let sortedProducts = [...currentProducts];
-            switch(sortValue) {
-                case 'name-asc':
-                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-                    break;
-                case 'name-desc':
-                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
-                    break;
-                case 'price-asc':
-                    sortedProducts.sort((a, b) => {
-                        if (a.price === 0) return 1;
-                        if (b.price === 0) return -1;
-                        return a.price - b.price;
-                    });
-                    break;
-                case 'price-desc':
-                    sortedProducts.sort((a, b) => {
-                        if (a.price === 0) return 1;
-                        if (b.price === 0) return -1;
-                        return b.price - a.price;
-                    });
-                    break;
-            }
-            currentProducts = sortedProducts;
-            renderProducts(currentProducts, displayedCount);
-        }
-
-        renderProducts(products);
-
-        // Gestion du thème jour/nuit
+        // Thème
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.querySelector('.theme-icon');
         const html = document.documentElement;
-
         const savedTheme = localStorage.getItem('theme') || 'light';
+        
         html.setAttribute('data-theme', savedTheme);
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-        // Configurateur de pièce montée avec Gemini
-        const generateBtn = document.getElementById("generateBtn");
-        const resetBtn = document.getElementById("resetBtn");
-        const resultSection = document.getElementById("resultSection");
-        const btnText = document.querySelector(".btn-text");
-        const btnLoader = document.querySelector(".btn-loader");
-
-        if (generateBtn) {
-            generateBtn.addEventListener("click", async function() {
-                const occasion = document.getElementById("occasion").value;
-                const personnes = document.getElementById("personnes").value;
-                const etages = document.getElementById("etages").value;
-                const parfums = Array.from(document.getElementById("parfums").selectedOptions).map(opt => opt.value);
-                const decoration = document.getElementById("decoration").value;
-                const couleurs = document.getElementById("couleurs").value;
-                const details = document.getElementById("details").value;
-
-                if (!occasion || !personnes || !etages || parfums.length === 0 || !decoration || !couleurs) {
-                    alert("Veuillez remplir tous les champs obligatoires");
-                    return;
-                }
-
-                generateBtn.disabled = true;
-                btnText.style.display = "none";
-                btnLoader.style.display = "flex";
-
-                try {
-                    const prompt = `Tu es un pâtissier expert spécialisé dans les pièces montées. Un client souhaite commander une pièce montée avec les caractéristiques suivantes:
-
-Occasion: ${occasion}
-Nombre de personnes: ${personnes}
-Nombre d'étages: ${etages}
-Parfums: ${parfums.join(", ")}
-Style de décoration: ${decoration}
-Couleurs principales: ${couleurs}
-${details ? `Détails supplémentaires: ${details}` : ""}
-
-Calcule un prix réaliste entre 150€ et 800€ selon la complexité (plus d'étages = plus cher, décoration élaborée = plus cher).
-Crée une description appétissante et professionnelle en 2-3 phrases.
-
-Réponds UNIQUEMENT avec un objet JSON au format suivant (sans markdown, sans backticks):
-{"prix": 450, "description": "Une magnifique pièce montée..."}`;
-
-                    // Appel à l'API Gemini
-                    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            contents: [{
-                                parts: [{
-                                    text: prompt
-                                }]
-                            }],
-                            generationConfig: {
-                                temperature: 0.7,
-                                maxOutputTokens: 500
-                            }
-                        })
-                    });
-
-                    const data = await response.json();
-                    
-                    if (!data.candidates || !data.candidates[0]) {
-                        throw new Error("Pas de réponse de l'API");
-                    }
-
-                    let aiResponse = data.candidates[0].content.parts[0].text.trim();
-                    
-                    // Nettoyer la réponse des markdown
-                    aiResponse = aiResponse.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
-                    
-                    const result = JSON.parse(aiResponse);
-
-                    // Générer une image depuis Unsplash
-                    const imageUrl = `https://source.unsplash.com/800x800/?wedding-cake,elegant,${decoration.replace(/ /g, "-")}`;
-                    
-                    document.getElementById("resultPrice").textContent = `${result.prix} € (estimation)`;
-                    document.getElementById("resultDescription").textContent = result.description;
-                    document.getElementById("resultImage").innerHTML = `<img src="${imageUrl}" alt="Pièce montée" />`;
-                    
-                    resultSection.style.display = "block";
-                    resultSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-                } catch (error) {
-                    console.error("Erreur:", error);
-                    alert("Une erreur est survenue. Veuillez nous contacter directement au 07 87 32 64 99");
-                } finally {
-                    generateBtn.disabled = false;
-                    btnText.style.display = "block";
-                    btnLoader.style.display = "none";
-                }
-            });
-
-            resetBtn.addEventListener("click", function() {
-                document.getElementById("occasion").value = "";
-                document.getElementById("personnes").value = "";
-                document.getElementById("etages").value = "";
-                document.getElementById("parfums").selectedIndex = -1;
-                document.getElementById("decoration").value = "";
-                document.getElementById("couleurs").value = "";
-                document.getElementById("details").value = "";
-                resultSection.style.display = "none";
-                document.querySelector(".configurator-form").scrollIntoView({ behavior: "smooth" });
-            });
-        }
-
-
-                generateBtn.disabled = true;
-                btnText.style.display = "none";
-                btnLoader.style.display = "flex";
-
-                try {
-                    const prompt = `Tu es un pâtissier expert. Un client veut une pièce montée: Occasion: ${occasion}, Personnes: ${personnes}, Étages: ${etages}, Parfums: ${parfums.join(", ")}, Style: ${decoration}, Couleurs: ${couleurs}. ${details ? `Détails: ${details}` : ""} Réponds en JSON: {"prix": "nombre entre 150-800", "description": "2-3 phrases"}`;
-
-                    const response = await fetch("https://api.anthropic.com/v1/messages", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, messages: [{ role: "user", content: prompt }] })
-                    });
-
-                    const data = await response.json();
-                    let aiResponse = data.content[0].text.trim().replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
-                    const result = JSON.parse(aiResponse);
-                    const imageUrl = `https://source.unsplash.com/800x800/?wedding-cake,elegant,${decoration}`;
-                    
-                    document.getElementById("resultPrice").textContent = `${result.prix} € (estimation)`;
-                    document.getElementById("resultDescription").textContent = result.description;
-                    document.getElementById("resultImage").innerHTML = `<img src="${imageUrl}" alt="Pièce montée" />`;
-                    resultSection.style.display = "block";
-                    resultSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                } catch (error) {
-                    alert("Erreur. Contactez-nous au 07 87 32 64 99");
-                } finally {
-                    generateBtn.disabled = false;
-                    btnText.style.display = "block";
-                    btnLoader.style.display = "none";
-                }
-            });
-
-            resetBtn.addEventListener("click", function() {
-                document.getElementById("occasion").value = "";
-                document.getElementById("personnes").value = "";
-                document.getElementById("etages").value = "";
-                document.getElementById("parfums").selectedIndex = -1;
-                document.getElementById("decoration").value = "";
-                document.getElementById("couleurs").value = "";
-                document.getElementById("details").value = "";
-                resultSection.style.display = "none";
-                document.querySelector(".configurator-form").scrollIntoView({ behavior: "smooth" });
-            });
-        }
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         });
 
-        // Créateur de pièce montée
-        const calculateBtn = document.getElementById('calculateBtn');
-        const cakeResult = document.getElementById('cakeResult');
-        const emailBtn = document.getElementById('emailBtn');
-        
-        let currentEstimate = null;
+        // Configurateur
+        let currentQuote = null;
+        const generateBtn = document.getElementById('generateBtn');
+        const sendEmailBtn = document.getElementById('sendEmailBtn');
+        const resetBtn = document.getElementById('resetBtn');
 
-        calculateBtn.addEventListener('click', async function() {
-            const size = document.getElementById('cakeSize').value;
-            const layers = document.getElementById('cakeLayers').value;
-            const flavor = document.getElementById('cakeFlavor').value;
-            const decoration = document.getElementById('cakeDecoration').value;
-            const occasion = document.getElementById('cakeOccasion').value;
-            const notes = document.getElementById('cakeNotes').value;
+        generateBtn.addEventListener('click', async () => {
+            const description = document.getElementById('description').value.trim();
+            const email = document.getElementById('email').value.trim();
 
-            if (!size || !layers || !flavor || !decoration) {
-                alert('Veuillez remplir tous les champs obligatoires');
+            if (!description || description.length < 50) {
+                alert('Décrivez votre pièce montée avec plus de détails (minimum 50 caractères)');
                 return;
             }
 
-            // Désactiver le bouton et afficher le loader
-            calculateBtn.disabled = true;
-            document.querySelector('.btn-text').style.display = 'none';
-            document.querySelector('.btn-loader').style.display = 'inline';
+            if (!email || !email.includes('@')) {
+                alert('Entrez une adresse email valide');
+                return;
+            }
+
+            // UI Loading
+            generateBtn.disabled = true;
+            document.getElementById('btnText').classList.add('hidden');
+            document.getElementById('btnLoader').classList.remove('hidden');
 
             try {
-                // Appel à l'API Claude pour calculer le prix
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
-                        max_tokens: 1000,
-                        messages: [{
-                            role: 'user',
-                            content: `Tu es un expert pâtissier français spécialisé dans les pièces montées. Calcule un prix réaliste en euros pour une pièce montée avec ces caractéristiques:
+                        contents: [{
+                            parts: [{
+                                text: `Tu es pâtissier expert. Analyse cette demande et réponds en JSON pur (sans markdown):
+"${description}"
 
-Taille: ${size}
-Étages: ${layers}
-Parfum: ${flavor}
-Décoration: ${decoration}
-Occasion: ${occasion}
-Notes: ${notes || 'Aucune'}
-
-Donne une estimation de prix en tenant compte:
-- Prix de base selon la taille (small: 80-120€, medium: 150-200€, large: 250-350€, xlarge: 400-600€)
-- Supplément par étage supplémentaire (30-50€ par étage au-delà du premier)
-- Coût de la décoration (simple: +0€, floral: +40€, gold: +60€, fondant: +80€, fruits: +30€, macarons: +50€)
-- Majoration pour mariages (+20%)
-
-Réponds UNIQUEMENT au format JSON suivant, sans texte additionnel:
+Format JSON strict:
 {
-  "price": nombre_en_euros,
-  "breakdown": {
-    "base": prix_de_base,
-    "layers": coût_étages_supplémentaires,
-    "decoration": coût_décoration,
-    "occasion": majoration_occasion
-  },
-  "details": "brève_explication_personnalisée"
-}`
-                        }]
+  "prix": nombre entre 150-1200,
+  "description": "2-3 phrases appétissantes",
+  "specifications": "Détails: étages, parfums, déco, dimensions"
+}
+
+Prix: +50€/étage, +100-300€ déco complexe, +50€ parfums premium.`
+                            }]
+                        }],
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 800
+                        }
                     })
                 });
 
                 const data = await response.json();
-                const content = data.content[0].text;
+                let text = data.candidates[0].content.parts[0].text.trim();
+                text = text.replace(/```json\n?/g, '').replace(/```/g, '').trim();
                 
-                // Nettoyer et parser la réponse JSON
-                const jsonMatch = content.match(/\{[\s\S]*\}/);
-                if (!jsonMatch) {
-                    throw new Error('Format de réponse invalide');
-                }
+                const result = JSON.parse(text);
+                currentQuote = { ...result, email, description };
+
+                // Afficher résultats
+                document.getElementById('resultPrice').textContent = `${result.prix} € (estimation)`;
+                document.getElementById('resultDesc').textContent = result.description;
+                document.getElementById('resultSpecs').textContent = result.specifications;
+                document.getElementById('resultImage').src = 'https://source.unsplash.com/800x800/?wedding-cake,elegant';
                 
-                const estimate = JSON.parse(jsonMatch[0]);
-                currentEstimate = estimate;
-
-                // Créer les labels en français
-                const sizeLabels = {
-                    small: 'Petit (10-15 personnes)',
-                    medium: 'Moyen (20-30 personnes)',
-                    large: 'Grand (40-50 personnes)',
-                    xlarge: 'Très grand (60+ personnes)'
-                };
-
-                const flavorLabels = {
-                    vanilla: 'Vanille',
-                    chocolate: 'Chocolat',
-                    strawberry: 'Fraise',
-                    lemon: 'Citron',
-                    caramel: 'Caramel',
-                    coffee: 'Café',
-                    pistachio: 'Pistache'
-                };
-
-                const decorationLabels = {
-                    simple: 'Simple et élégant',
-                    floral: 'Fleurs en sucre',
-                    gold: 'Détails dorés',
-                    fondant: 'Pâte à sucre personnalisée',
-                    fruits: 'Fruits frais',
-                    macarons: 'Macarons décoratifs'
-                };
-
-                const occasionLabels = {
-                    wedding: 'Mariage',
-                    birthday: 'Anniversaire',
-                    baptism: 'Baptême',
-                    communion: 'Communion',
-                    anniversary: 'Anniversaire de mariage',
-                    other: 'Autre'
-                };
-
-                // Afficher le résumé
-                document.getElementById('resultSummary').innerHTML = `
-                    <p><strong>Taille :</strong> ${sizeLabels[size]}</p>
-                    <p><strong>Étages :</strong> ${layers} étage${layers > 1 ? 's' : ''}</p>
-                    <p><strong>Parfum :</strong> ${flavorLabels[flavor]}</p>
-                    <p><strong>Décoration :</strong> ${decorationLabels[decoration]}</p>
-                    ${occasion ? `<p><strong>Occasion :</strong> ${occasionLabels[occasion]}</p>` : ''}
-                    ${notes ? `<p style="margin-top: 15px; font-style: italic;">${notes}</p>` : ''}
-                    <p style="margin-top: 15px; color: var(--color-accent);">${estimate.details}</p>
-                `;
-
-                document.getElementById('priceValue').textContent = `${estimate.price}€`;
-                cakeResult.style.display = 'block';
-                
-                // Scroll vers le résultat
-                cakeResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                document.getElementById('resultSection').classList.remove('hidden');
+                document.getElementById('emailSuccess').classList.add('hidden');
 
             } catch (error) {
-                console.error('Erreur:', error);
-                alert('Une erreur est survenue lors du calcul. Veuillez réessayer ou nous appeler directement.');
+                console.error(error);
+                alert('Erreur. Appelez-nous au 07 87 32 64 99');
             } finally {
-                // Réactiver le bouton
-                calculateBtn.disabled = false;
-                document.querySelector('.btn-text').style.display = 'inline';
-                document.querySelector('.btn-loader').style.display = 'none';
+                generateBtn.disabled = false;
+                document.getElementById('btnText').classList.remove('hidden');
+                document.getElementById('btnLoader').classList.add('hidden');
             }
         });
 
-        // Envoi par email
-        emailBtn.addEventListener('click', function() {
-            if (!currentEstimate) return;
+        sendEmailBtn.addEventListener('click', async () => {
+            if (!currentQuote) return;
 
-            const size = document.getElementById('cakeSize').value;
-            const layers = document.getElementById('cakeLayers').value;
-            const flavor = document.getElementById('cakeFlavor').value;
-            const decoration = document.getElementById('cakeDecoration').value;
-            const occasion = document.getElementById('cakeOccasion').value;
-            const notes = document.getElementById('cakeNotes').value;
+            sendEmailBtn.disabled = true;
+            document.getElementById('emailText').classList.add('hidden');
+            document.getElementById('emailLoader').classList.remove('hidden');
 
-            const sizeLabels = {
-                small: 'Petit (10-15 personnes)',
-                medium: 'Moyen (20-30 personnes)',
-                large: 'Grand (40-50 personnes)',
-                xlarge: 'Très grand (60+ personnes)'
-            };
+            // Simuler l'envoi (dans un vrai projet, utiliser un backend)
+            setTimeout(() => {
+                document.getElementById('emailSuccess').textContent = `✓ Devis envoyé à ${currentQuote.email}`;
+                document.getElementById('emailSuccess').classList.remove('hidden');
+                
+                sendEmailBtn.disabled = false;
+                document.getElementById('emailText').classList.remove('hidden');
+                document.getElementById('emailLoader').classList.add('hidden');
+            }, 1500);
+        });
 
-            const subject = 'Demande de devis - Pièce montée';
-            const body = `Bonjour,
-
-Je souhaite obtenir un devis pour une pièce montée avec les caractéristiques suivantes :
-
-Taille : ${sizeLabels[size]}
-Nombre d'étages : ${layers}
-Parfum : ${flavor}
-Décoration : ${decoration}
-${occasion ? `Occasion : ${occasion}` : ''}
-${notes ? `\nInformations supplémentaires :\n${notes}` : ''}
-
-Prix estimé via votre calculateur : ${currentEstimate.price}€
-
-Merci de me recontacter pour confirmer ce devis et discuter des détails.
-
-Cordialement`;
-
-            window.location.href = `mailto:exemple@boulangerie.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        resetBtn.addEventListener('click', () => {
+            document.getElementById('description').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('emailSuccess').classList.add('hidden');
+            currentQuote = null;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 
