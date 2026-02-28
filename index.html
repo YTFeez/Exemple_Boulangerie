@@ -1106,11 +1106,45 @@ Prix: +50€/étage, +100-300€ déco complexe, +50€ parfums premium.`
                 const result = JSON.parse(text);
                 currentQuote = { ...result, email, description };
 
+                // Générer l'image avec Pollinations.AI (100% gratuit, illimité, instantané)
+                // Créer un prompt détaillé en anglais basé sur les specs
+                let imagePrompt = 'professional wedding cake photography, ';
+                
+                // Extraire les infos pour le prompt
+                if (description.toLowerCase().includes('mariage')) imagePrompt += 'elegant wedding cake, ';
+                if (description.toLowerCase().includes('anniversaire')) imagePrompt += 'birthday celebration cake, ';
+                
+                // Ajouter les parfums si mentionnés
+                if (description.toLowerCase().includes('chocolat')) imagePrompt += 'chocolate, ';
+                if (description.toLowerCase().includes('vanille')) imagePrompt += 'vanilla, ';
+                if (description.toLowerCase().includes('fraise')) imagePrompt += 'strawberry, ';
+                if (description.toLowerCase().includes('framboise')) imagePrompt += 'raspberry, ';
+                
+                // Ajouter le style
+                if (description.toLowerCase().includes('moderne')) imagePrompt += 'modern minimalist design, ';
+                if (description.toLowerCase().includes('classique')) imagePrompt += 'classic elegant style, ';
+                if (description.toLowerCase().includes('romantique')) imagePrompt += 'romantic floral decoration, ';
+                
+                // Ajouter les couleurs
+                if (description.toLowerCase().includes('blanc')) imagePrompt += 'white, ';
+                if (description.toLowerCase().includes('rose')) imagePrompt += 'pink, ';
+                if (description.toLowerCase().includes('or') || description.toLowerCase().includes('doré')) imagePrompt += 'gold accents, ';
+                
+                imagePrompt += 'multiple tiers, professional bakery, studio lighting, high quality, detailed, 4k';
+                
+                // Encoder le prompt pour l'URL
+                const encodedPrompt = encodeURIComponent(imagePrompt);
+                
+                // URL de Pollinations.AI - génère une nouvelle image à chaque appel
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&seed=${Date.now()}&nologo=true`;
+                
+                // Afficher l'image
+                document.getElementById('resultImage').src = imageUrl;
+
                 // Afficher résultats
                 document.getElementById('resultPrice').textContent = `${result.prix} €`;
                 document.getElementById('resultDesc').textContent = result.description;
                 document.getElementById('resultSpecs').textContent = result.specifications;
-                document.getElementById('resultImage').src = 'https://source.unsplash.com/800x800/?wedding-cake,elegant';
                 
                 document.getElementById('resultSection').classList.remove('hidden');
                 document.getElementById('emailSuccess').classList.add('hidden');
