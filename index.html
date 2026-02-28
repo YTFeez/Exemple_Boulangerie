@@ -1107,7 +1107,7 @@ Prix: +50€/étage, +100-300€ déco complexe, +50€ parfums premium.`
                 currentQuote = { ...result, email, description };
 
                 // Afficher résultats
-                document.getElementById('resultPrice').textContent = `${result.prix} € (estimation)`;
+                document.getElementById('resultPrice').textContent = `${result.prix} €`;
                 document.getElementById('resultDesc').textContent = result.description;
                 document.getElementById('resultSpecs').textContent = result.specifications;
                 document.getElementById('resultImage').src = 'https://source.unsplash.com/800x800/?wedding-cake,elegant';
@@ -1132,15 +1132,84 @@ Prix: +50€/étage, +100-300€ déco complexe, +50€ parfums premium.`
             document.getElementById('emailText').classList.add('hidden');
             document.getElementById('emailLoader').classList.remove('hidden');
 
-            // Simuler l'envoi (dans un vrai projet, utiliser un backend)
-            setTimeout(() => {
-                document.getElementById('emailSuccess').textContent = `✓ Devis envoyé à ${currentQuote.email}`;
+            try {
+                // Envoi avec Web3Forms (gratuit, pas de config)
+                const formData = new FormData();
+                formData.append('access_key', 'YOUR_ACCESS_KEY'); // Clé publique gratuite
+                formData.append('subject', 'Nouvelle demande de pièce montée - La Maison du Pain');
+                formData.append('from_name', 'Site Boulangerie');
+                formData.append('email', 'feezexe@gmail.com');
+                formData.append('message', `
+🎂 NOUVELLE DEMANDE DE PIÈCE MONTÉE
+
+📧 Email client: ${currentQuote.email}
+
+📝 DESCRIPTION DU CLIENT:
+${currentQuote.description}
+
+💰 DEVIS GÉNÉRÉ PAR L'IA:
+Prix estimé: ${currentQuote.prix}€
+
+Description professionnelle:
+${currentQuote.description}
+
+Spécifications détaillées:
+${currentQuote.specifications}
+
+---
+Pour confirmer, contactez le client: ${currentQuote.email}
+Ou appelez directement au: 07 87 32 64 99
+                `);
+
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Email envoyé avec succès
+                    document.getElementById('emailSuccess').textContent = `✓ Devis envoyé à feezexe@gmail.com !`;
+                    document.getElementById('emailSuccess').classList.remove('hidden');
+                } else {
+                    throw new Error('Échec envoi');
+                }
+
+            } catch (error) {
+                console.error('Erreur:', error);
+                
+                // Fallback: ouvrir le client mail
+                const subject = encodeURIComponent('Nouvelle demande pièce montée');
+                const body = encodeURIComponent(`
+NOUVELLE DEMANDE DE PIÈCE MONTÉE
+
+Email client: ${currentQuote.email}
+
+DESCRIPTION:
+${currentQuote.description}
+
+DEVIS GÉNÉRÉ:
+Prix: ${currentQuote.prix}€
+${currentQuote.description}
+
+SPÉCIFICATIONS:
+${currentQuote.specifications}
+
+Contactez: ${currentQuote.email}
+                `);
+                
+                // Ouvrir Gmail avec le contenu pré-rempli
+                window.open(`mailto:feezexe@gmail.com?subject=${subject}&body=${body}`, '_blank');
+                
+                document.getElementById('emailSuccess').textContent = `✓ Client mail ouvert avec le devis`;
                 document.getElementById('emailSuccess').classList.remove('hidden');
                 
+            } finally {
                 sendEmailBtn.disabled = false;
                 document.getElementById('emailText').classList.remove('hidden');
                 document.getElementById('emailLoader').classList.add('hidden');
-            }, 1500);
+            }
         });
 
         resetBtn.addEventListener('click', () => {
